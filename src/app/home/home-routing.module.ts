@@ -20,10 +20,7 @@ const routes: Routes = [
         path: 'create-team',
         loadChildren: () => import('./create-team/create-team.module').then( m => m.CreateTeamPageModule)
       },
-      {
-        path: 'login-page',
-        loadChildren: () => import('./login-page/login-page.module').then( m => m.LoginPagePageModule)
-      },
+
       {
         path: 'welcome-player',
         loadChildren: () => import('./welcome-player/welcome-player.module').then( m => m.WelcomePlayerPageModule)

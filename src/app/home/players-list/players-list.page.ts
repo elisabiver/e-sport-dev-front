@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-players-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayersListPage implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService, public http: HttpClient) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidLoad() {
+    // retrieves all the players
+    const url = 'https://e-sport-dev.herokuapp.com/api/player';
+    this.http.get(url).subscribe(players => {
+      console.log(`Trips loaded`, players);
+    });
   }
 
 }
