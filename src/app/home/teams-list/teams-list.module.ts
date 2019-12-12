@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { TeamsListPageRoutingModule } from './teams-list-routing.module';
 
-import { HomePage } from './home.page';
+import { TeamsListPage } from './teams-list.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    TeamsListPageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [TeamsListPage]
 })
-export class HomePageModule {}
+export class TeamsListPageModule {}

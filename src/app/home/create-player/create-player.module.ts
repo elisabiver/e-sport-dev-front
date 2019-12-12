@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { CreatePlayerPageRoutingModule } from './create-player-routing.module';
 
-import { HomePage } from './home.page';
+import { CreatePlayerPage } from './create-player.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    CreatePlayerPageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [CreatePlayerPage]
 })
-export class HomePageModule {}
+export class CreatePlayerPageModule {}
