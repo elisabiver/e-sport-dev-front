@@ -22,7 +22,6 @@ export class HomePage {
       { title: 'Create team', icon: 'add', path: 'create-team' },
       { title: 'Create tournament', icon: 'edit', path: 'create-tournament' },
       { title: 'Edit tournament', icon: 'edit', path: 'edit-tournament' },
-      { title: 'Login page', icon: 'map', path: 'login-page' }, //edit icon
       { title: 'Players list', icon: 'list', path: 'players-list' },
       { title: 'Teams in tournament list', icon: 'list', path: 'teams-in-tournament-list' },
       { title: 'Teams list', icon: 'list', path: 'teams-list' },
