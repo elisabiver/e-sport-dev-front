@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-players-list',
@@ -16,9 +17,9 @@ export class PlayersListPage implements OnInit {
 
   ionViewDidLoad() {
     // retrieves all the players
-    const url = 'https://e-sport-dev.herokuapp.com/api/player';
+    const url = `${environment.apiUrl}/player`;
     this.http.get(url).subscribe(players => {
-      console.log(`Trips loaded`, players);
+      console.log(`Player loaded`, players);
     });
   }
 
