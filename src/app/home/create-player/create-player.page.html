@@ -8,21 +8,34 @@
 </ion-header>
 
 <ion-content>
-  * <form>
-    <ion-input type="text" placeholder="Nickname" `name="nickname" required`></ion-input>
-    <ion-input type="text" placeholder="Name" `name="name" required`></ion-input>
-    <ion-input type="text" placeholder="Lastname" `name="lastname" required`></ion-input>
-    <ion-input type="text" placeholder="Gender" `name="gender" required`></ion-input>
-    <ion-input type="radio" name="gender" value="male" checked> Male<br> </ion-input>
-    <ion-input type="radio" name="gender" value="female"> Female<br> </ion-input>
-    <ion-input type="radio" name="gender" value="other"> Other </ion-input>
-    <ion-input type="date" placeholder="Birthdate" `name="birthdate" required`></ion-input>
-    <ion-input type="password" placeholder="Password" `name="password" required`></ion-input>
-    <ion-input type="image" placeholder="Image" `name="image" required`></ion-input>
-
-     <!-- Submit button -->
-     <ion-button type="submit" expand="block" >Create Player</ion-button> 
-  * </form>
-
-
+  <form>
+    <ion-input type="text" placeholder="Nickname" name="nickname" required></ion-input>
+    <ion-input type="text" placeholder="Name" name="name" required></ion-input>
+    <ion-input type="text" placeholder="Lastname" name="lastname" required></ion-input>
+    <ion-radio-group>
+        <ion-list-header>
+          <ion-label>Gender</ion-label>
+        </ion-list-header>
+        <ion-item>
+        <ion-label>Male</ion-label>
+        <ion-radio slot="start" value="male"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Female</ion-label>
+        <ion-radio slot="start" value="female"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Other</ion-label>
+        <ion-radio slot="start" value="other"></ion-radio>
+      </ion-item>
+    </ion-radio-group>  
+    <ion-item>
+      <ion-label>Birthdate</ion-label>
+      <ion-datetime displayFormat=" DD MMMM YY" placeholder="Select Date" value="2000-01-01T13:47:20.789"></ion-datetime>
+    </ion-item>
+    <ion-input type="password" placeholder="Password" name="password" required></ion-input>
+    <ion-input type="image" placeholder="Image" name="image" required></ion-input>
+ 
+    <ion-button type="submit" expand="block" >Create Player</ion-button> 
+  </form> 
 </ion-content>
