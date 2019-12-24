@@ -8,15 +8,15 @@
 </ion-header>
 
 <ion-content>
-  <form>
+  <form #createPlayer="ngForm" (submit)="displayGreeting()">
     <ion-input type="text" placeholder="Nickname" name="nickname" required></ion-input>
     <ion-input type="text" placeholder="Name" name="name" required></ion-input>
     <ion-input type="text" placeholder="Lastname" name="lastname" required></ion-input>
     <ion-radio-group>
-        <ion-list-header>
-          <ion-label>Gender</ion-label>
-        </ion-list-header>
-        <ion-item>
+      <ion-list-header>
+        <ion-label>Gender</ion-label>
+      </ion-list-header>
+      <ion-item>
         <ion-label>Male</ion-label>
         <ion-radio slot="start" value="male"></ion-radio>
       </ion-item>
@@ -35,6 +35,10 @@
     </ion-item>
     <ion-input type="password" placeholder="Password" name="password" required></ion-input>
     <ion-input type="image" placeholder="Image" name="image" required></ion-input>
+
+    <ion-input type="text" placeholder="Who are you?" [(ngModel)]="greeting" name="greeting" required></ion-input>
+
+    <p *ngIf="displayedGreeting">Hello {{ displayedGreeting }}</p>
  
     <ion-button type="submit" expand="block" >Create Player</ion-button> 
   </form> 
