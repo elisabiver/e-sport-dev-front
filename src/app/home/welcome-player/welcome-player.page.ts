@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-welcome-player',
@@ -9,10 +10,11 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class WelcomePlayerPage implements OnInit {
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private modalController: ModalController) { }
 
   ngOnInit() {
   }
+  
 
   logOut() {
     console.log('logging out...');
