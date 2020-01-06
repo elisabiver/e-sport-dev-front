@@ -8,6 +8,13 @@
 </ion-header>
 
 <ion-content>
+  <ul>
+    <li *ngFor="let team of teams">
+      <p>
+        {{ team.name }}
+      </p>
+    </li>
+  </ul>
   <p>all avaliable teams</p>
   <form #createPlayer="ngForm">
     <ion-button expand="block" >team 1</ion-button> 
@@ -17,3 +24,4 @@
     <ion-button expand="block" >add team</ion-button>
   </form> 
 </ion-content>
+

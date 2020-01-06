@@ -26,12 +26,4 @@ export class PlayersListPage implements OnInit {
     });
   }
 
-  ionViewDidLoad() {
-    // retrieves all the players
-    const url = `/api/player`;
-    this.http.get(url).subscribe(players => {
-      console.log(`Player loaded`, players);
-    });
-  }
-
 }

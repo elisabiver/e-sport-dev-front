@@ -8,6 +8,13 @@
 </ion-header>
 
 <ion-content>
+  <ul>
+    <li *ngFor="let tournament of tournaments">
+      <p>
+        {{ tournament.name }}
+      </p>
+    </li>
+  </ul>
   <p>all avaliable tournaments</p>
   <form #createPlayer="ngForm">
     <ion-button expand="block" >tournament 1</ion-button> 
