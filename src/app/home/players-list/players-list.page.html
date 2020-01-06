@@ -8,6 +8,17 @@
 </ion-header>
 
 <ion-content>
+  <form #createPlayer="ngForm">
+    <ion-item>
+      <ion-label>sort by</ion-label>
+      <ion-select placeholder="nickname">
+        <ion-select-option value="nickname">nickname</ion-select-option>
+        <ion-select-option value="name">name</ion-select-option>
+        <ion-select-option value="team">team</ion-select-option>
+        <ion-select-option value="tournament">tournament</ion-select-option>
+      </ion-select>
+    </ion-item> 
+  </form> 
   <ul>
     <li *ngFor="let player of players">
       <p>

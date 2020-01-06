@@ -8,21 +8,17 @@
 </ion-header>
 
 <ion-content>
-  * <form>
-    <ion-input type="text" placeholder="Nickname" `name="nickname" required`></ion-input>
-    <ion-input type="text" placeholder="Name" `name="name" required`></ion-input>
-    <ion-input type="text" placeholder="Lastname" `name="lastname" required`></ion-input>
-    <ion-input type="text" placeholder="Gender" `name="gender" required`></ion-input>
-    <ion-input type="radio" name="gender" value="male" checked> Male<br> </ion-input>
-    <ion-input type="radio" name="gender" value="female"> Female<br> </ion-input>
-    <ion-input type="radio" name="gender" value="other"> Other </ion-input>
-    <ion-input type="date" placeholder="Birthdate" `name="birthdate" required`></ion-input>
-    <ion-input type="password" placeholder="Password" `name="password" required`></ion-input>
-    <ion-input type="image" placeholder="Image" `name="image" required`></ion-input>
+  <form #createTeam="ngForm" (submit)="displayGreeting()">
+    <ion-input type="text" placeholder="Name" name="name" required></ion-input>
+    <ion-input type="text" placeholder="Player1" name="player" required></ion-input>
+    <ion-button expand="block" >add Player</ion-button> 
+    <ion-input type="image" placeholder="Image" name="image" required></ion-input>
 
+    <ion-input type="text" placeholder="Who are you?" [(ngModel)]="greeting" name="greeting" required></ion-input>
 
-     <!-- Submit button -->
-     <ion-button type="submit" expand="block" >Create Player</ion-button> 
-  * </form>
+    <p *ngIf="displayedGreeting">Hello {{ displayedGreeting }}</p>
+ 
+    <ion-button type="submit" expand="block" >Create Team</ion-button> 
+  </form>
 </ion-content>
 
