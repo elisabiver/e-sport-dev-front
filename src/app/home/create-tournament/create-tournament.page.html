@@ -3,10 +3,22 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>CreateTournament</ion-title>
+    <ion-title>Create a new tournament</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form #createPlayer="ngForm" (submit)="displayGreeting()">
+    <ion-input type="text" placeholder="Name" name="name" required></ion-input>
+    <ion-input type="text" placeholder="Location" name="location" required></ion-input>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat=" DD MMMM YY" placeholder="Select Date" value="2000-01-01T13:47:20.789"></ion-datetime>
+    </ion-item>
+    <ion-input type="text" placeholder="Team" name="team" required></ion-input>
+    <ion-button expand="block" >add Team</ion-button> 
+    <ion-input type="text" placeholder="Who are you?" [(ngModel)]="greeting" name="greeting" required></ion-input>
+    <p *ngIf="displayedGreeting">Hello {{ displayedGreeting }}</p>
+    <ion-button type="submit" expand="block" >Create Player</ion-button> 
+  </form> 
 </ion-content>

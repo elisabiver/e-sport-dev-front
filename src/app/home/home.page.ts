@@ -20,14 +20,14 @@ export class HomePage {
     this.tabs = [
       { title: 'Create player', icon: 'add', path: 'create-player' },
       { title: 'Create team', icon: 'add', path: 'create-team' },
-      { title: 'Create tournament', icon: 'edit', path: 'create-tournament' },
-      { title: 'Edit tournament', icon: 'edit', path: 'edit-tournament' },
+      { title: 'Create tournament', icon: 'create', path: 'create-tournament' },
+      { title: 'Edit tournament', icon: 'create', path: 'edit-tournament' },
       { title: 'Players list', icon: 'list', path: 'players-list' },
       { title: 'Teams in tournament list', icon: 'list', path: 'teams-in-tournament-list' },
       { title: 'Teams list', icon: 'list', path: 'teams-list' },
       { title: 'Tournaments list', icon: 'list', path: 'tournaments-list' },
       { title: 'Welcome player', icon: 'map', path: 'welcome-player' }, //edit icon
-      { title: 'Welcome team', icon: 'map', path: 'edit-tournament' }, //edit icon
+      { title: 'Welcome team', icon: 'map', path: 'welcome-team' }, //edit icon
       { title: 'Welcome tournament', icon: 'map', path: 'welcome-tournament' } //edit icon
     ];
   }
