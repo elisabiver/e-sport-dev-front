@@ -8,5 +8,11 @@
 </ion-header>
 
 <ion-content>
-
+  <ul>
+    <li *ngFor="let team of teams">
+      <p>
+        {{ team.name }}
+      </p>
+    </li>
+  </ul>
 </ion-content>

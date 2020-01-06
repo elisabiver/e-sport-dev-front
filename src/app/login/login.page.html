@@ -42,6 +42,13 @@
       <!-- Error message displayed if the login failed -->
       <ion-text color='danger' *ngIf="loginError">pseudo or password is invalid.</ion-text>
 
+      <ion-row>
+        <div text-center>
+      If you don't have an account, please <a routerLink='/register'>
+        register</a> first!
+        </div>
+    </ion-row>
+
     </div>
   </form>
 </ion-content>

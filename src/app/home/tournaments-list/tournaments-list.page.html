@@ -8,5 +8,11 @@
 </ion-header>
 
 <ion-content>
-
+  <ul>
+    <li *ngFor="let tournament of tournaments">
+      <p>
+        {{ tournament.name }}
+      </p>
+    </li>
+  </ul>
 </ion-content>
