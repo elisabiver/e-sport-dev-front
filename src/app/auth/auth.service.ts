@@ -64,7 +64,7 @@ export class AuthService {
     console.log('Player logged out');
   }
 
-  register(firstName: String, lastName: String, pseudo: String, birthDate: Date, email: String, password: String) {
+  register(firstName: String, lastName: String, pseudo: String, birthDate: Date, password: String) {
     let payload = {
       "firstName": firstName,
       "lastName": lastName,
@@ -72,7 +72,7 @@ export class AuthService {
       "password": password,
       "birthDate": birthDate,
       "picture": "https://nlakakak",
-      "gender": "male"
+      "gender": "male" 
     };
     const authUrl = `api/player`;
     return this.http.post(authUrl, payload);
