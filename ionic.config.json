@@ -1,5 +1,7 @@
 {
   "name": "e-sport-dev",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
