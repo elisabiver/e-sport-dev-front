@@ -33,9 +33,10 @@ export class RegisterPage implements OnInit {
   // Register datas from form
 
   register(form: NgForm){
-    this.authService.register(form.value.firstName, form.value.lastName, form.value.pseudo, form.value.birthDate, form.value.email, form.value.password).subscribe(
+    this.authService.register(form.value.firstName, form.value.lastName, form.value.pseudo, form.value.email, form.value.birthDate,form.value.password).subscribe(
       data => {
-        // TODO Ici y a un probleme...
+        // mets le mot de passe dans la authrequest
+        // mets le pseud dans la authrequest
         this.authService.logIn(this.authRequest).subscribe({
           next: () => {
             this.router.navigateByUrl('/home');
