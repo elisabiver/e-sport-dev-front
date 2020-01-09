@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/auth/auth.service';
+import { TournamentService } from 'src/app/tournament.service'
+import { HttpClient } from '@angular/common/http';
+import { Tournament } from 'src/app/models/tournament';
+
 
 @Component({
   selector: 'app-create-tournament',
@@ -8,19 +13,18 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateTournamentPage implements OnInit {
 
-  greeting: string;
-  displayedGreeting: string;
-
-  displayGreeting(form: NgForm) {
-    if (form.valid) {
-      this.displayedGreeting = this.greeting;
-      console.log('Greeting displayed');
-    }
-  }
+  tournaments: Tournament[];
   
-  constructor() { }
+  constructor(private tournamentService: TournamentService, public http: HttpClient) {
+    this.tournaments = [];
+   }
 
   ngOnInit() {
   }
 
+  createTournament(form: NgForm){
+    console.log(form);
+    this.tournamentService.createTournament(form.value).subscribe();
+    console.log("test")
+  }
 }

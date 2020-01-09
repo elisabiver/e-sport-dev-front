@@ -1,6 +1,9 @@
 export class Tournament {
     name: string;
-    location: string;
+    location: {
+      type: string,
+      coordinates: number[]
+    };
     teams: string;
     createdAt: string;
   }
