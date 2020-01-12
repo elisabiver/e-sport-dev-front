@@ -64,20 +64,10 @@ export class AuthService {
     console.log('Player logged out');
   }
 
-  register(firstName: String, lastName: String, pseudo: String, birthDate: Date, password: String) {
-    let payload = {
-      "firstName": firstName,
-      "lastName": lastName,
-      "pseudo": pseudo,
-      "password": password,
-      "birthDate": birthDate,
-      "picture": "https://nlakakak",
-      "gender": "male" 
-    };
+   register(payload: object) {
     const authUrl = `api/player`;
     return this.http.post(authUrl, payload);
   }
-
 
   private saveAuth(auth: AuthResponse): Observable<void> {
     return from(this.storage.set('auth', auth));
