@@ -12,12 +12,12 @@
 <ion-content>
     <form #createPlayer="ngForm">
     <ion-item>
-      <ion-label>sort by</ion-label>
+      <ion-label>Sort by</ion-label>
       <ion-select placeholder="nickname">
-        <ion-select-option value="nickname">nickname</ion-select-option>
-        <ion-select-option value="name">name</ion-select-option>
-        <ion-select-option value="team">team</ion-select-option>
-        <ion-select-option value="tournament">tournament</ion-select-option>
+        <ion-select-option value="nickname">Nickname</ion-select-option>
+        <ion-select-option value="name">Name</ion-select-option>
+        <ion-select-option value="team">Team</ion-select-option>
+        <ion-select-option value="tournament">Tournament</ion-select-option>
       </ion-select>
     </ion-item> 
   </form> 
@@ -30,7 +30,8 @@
       <ion-label>
         <h2>{{ player.pseudo }}</h2>
         <h3>{{ player.firstName }} {{ player.lastName }}</h3>
-        <p>{{ player.birthDate }} {{ player.gender }}</p>
+        <p>{{ player.birthDate | date:'d MMMM y' }}</p>
+        <p> {{ player.gender }}</p>
       </ion-label>
     </ion-item>
   </ion-list>

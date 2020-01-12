@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Tournament } from 'src/app/models/tournament';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tournaments-list',
@@ -12,7 +13,7 @@ export class TournamentsListPage implements OnInit {
 
   tournaments: Tournament[];
 
-  constructor(private auth: AuthService, public http: HttpClient) {
+  constructor(private auth: AuthService, public http: HttpClient, private router: Router) {
     this.tournaments = [];
   }
 
@@ -22,6 +23,10 @@ export class TournamentsListPage implements OnInit {
       console.log(`Tournament loaded`, tournaments);
       this.tournaments = tournaments;
     });
+  }
+
+  GoToCreateTournament() {
+    this.router.navigateByUrl('home/create-tournament');
   }
 
 }

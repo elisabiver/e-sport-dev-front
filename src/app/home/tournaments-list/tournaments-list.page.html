@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content>
-  <h1>All avaliable tournaments</h1>
-  <ul>
-    <li *ngFor="let tournament of tournaments">
-        <ion-button expand="block">{{ tournament.name }}</ion-button>
-    </li>
-  </ul>
-  <ion-button expand="block">Add tournament</ion-button>
+  <h1 id="av">All available tournaments</h1>
+  <section *ngFor="let tournament of tournaments">
+    <ion-button expand="block">{{ tournament.name }}</ion-button>
+  </section>
+  <section id="add_tournament">
+    <ion-button shape="round" (click)="GoToCreateTournament()"><ion-icon name="add"></ion-icon> Add tournament</ion-button>
+  </section>
 </ion-content>

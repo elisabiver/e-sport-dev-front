@@ -5,7 +5,7 @@ import { WelcomeTeamPage } from './welcome-team.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: WelcomeTeamPage
   }
 ];

@@ -1,0 +1,17 @@
+section {
+    margin-top: 1em;
+  }
+
+  section:not(.full-width),
+  .full-width > header {
+    padding: 0 10px;
+  }
+
+#add_team {
+    margin-top: 3em;
+    text-align: center;
+}
+
+#av {
+    text-align: center;
+}
