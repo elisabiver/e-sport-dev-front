@@ -3,11 +3,26 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>welcome-team</ion-title>
+    <ion-title>Informations</ion-title>
+    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large" ></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card *ngIf="team">
+    <ion-card-header>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>{{ team.name }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
+  
+  
 
   <form #welcomePlayer="ngForm"> 
     <ion-button>
@@ -26,4 +41,4 @@
   </form>
   
     
-</ion-content>
+</ion-content >
