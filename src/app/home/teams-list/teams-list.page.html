@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+
   <h1 id="av">All available teams</h1>
   <section *ngFor="let team of teams">
     <ion-button (click)="DisplayTeamByID(team)" expand="block">{{ team.name }}</ion-button> 

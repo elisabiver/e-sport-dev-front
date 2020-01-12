@@ -8,36 +8,49 @@
   <form #form="ngForm" (ngSubmit)="register(form)" method="post">
     <ion-item>
       <ion-label position="floating">First Name</ion-label>
-      <ion-input ngModel name="firstName"></ion-input>
+      <ion-input ngModel name="firstName" required="true"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Last Name</ion-label>
-      <ion-input ngModel name="lastName"></ion-input>
+      <ion-input ngModel name="lastName" required="true"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Pseudo</ion-label>
-      <ion-input ngModel name="pseudo"></ion-input>
+      <ion-input ngModel name="pseudo" required="true"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Birthdate </ion-label>
-      <ion-datetime ngModel name="birthDate" displayFormat="D MMM YYYY" min="1950" max="2005"></ion-datetime>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" ngModel name="email"></ion-input>
+      <ion-datetime ngModel name="birthDate" displayFormat="D MMM YYYY" min="1950" max="2005" required="true"></ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" ngModel name="password"></ion-input>
+      <ion-input type="password" ngModel name="password" required="true"></ion-input>
     </ion-item>
+
+    <ion-radio-group ngModel name="gender" required="true">
+      <ion-list-header>
+        <ion-label>Gender</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Female</ion-label>
+        <ion-radio slot="start" color="success" value="female"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Male</ion-label>
+        <ion-radio slot="start" color="tertiary" value="male" checked></ion-radio>
+      </ion-item>
+    </ion-radio-group>
 
     <ion-button type="submit" expand="full" color="danger">Register</ion-button>
   </form>
-  <p text-center>Already have a account?</p>
-  <ion-button expand="full" color="primary" (click)="loginModal()">Login</ion-button>
+  <ion-row>
+    <div text-center>
+      Already have an account? <a routerLink='/login'>Log in here !</a>
+    </div>
+  </ion-row>
 </ion-content>

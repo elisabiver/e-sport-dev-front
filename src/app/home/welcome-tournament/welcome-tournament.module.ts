@@ -8,11 +8,14 @@ import { WelcomeTournamentPageRoutingModule } from './welcome-tournament-routing
 
 import { WelcomeTournamentPage } from './welcome-tournament.page';
 
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    LeafletModule.forRoot(),
     WelcomeTournamentPageRoutingModule
   ],
   declarations: [WelcomeTournamentPage]

@@ -4,6 +4,8 @@ import { AuthService } from '../auth/auth.service';
 import { AuthRequest } from '../models/auth-request';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-register',
@@ -11,13 +13,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  authRequest: AuthRequest;
+  players: User[];
 
   constructor(private modalController: ModalController,
+    private httpClient: HttpClient,
     private authService: AuthService,
     private router: Router,
-  ) { 
-    this.authRequest = new AuthRequest();
+    private navCtrl: NavController
+  ) {
+    this.players = [];
   }
 
   ngOnInit() {
@@ -28,26 +32,41 @@ export class RegisterPage implements OnInit {
     this.modalController.dismiss();
   }
 
-  // TODO un dismiss si on clique sur login
-
   // Register datas from form
+  register(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
 
-  register(form: NgForm){
-    this.authService.register(form.value.firstName, form.value.lastName, form.value.pseudo, form.value.email, form.value.birthDate,form.value.password).subscribe(
-      data => {
-        // mets le mot de passe dans la authrequest
-        // mets le pseud dans la authrequest
-        this.authService.logIn(this.authRequest).subscribe({
-          next: () => {
-            this.router.navigateByUrl('/home');
-          },
-          error: err => {
-            console.warn(`Registration failed: ${err.message}`);
-          }
-        });
+    let payload = {
+      "firstName": form.value.firstName,
+      "lastName": form.value.lastName,
+      "pseudo": form.value.pseudo,
+      "password": form.value.password,
+      "birthDate": form.value.birthDate,
+      "picture": "https://banner2.cleanpng.com/20180722/gfc/kisspng-user-profile-2018-in-sight-user-conference-expo-5b554c0968c377.0307553315323166814291.jpg",
+      "gender": form.controls['gender'].value
+    };
+
+    this.authService.register(payload).subscribe({
+      next: () => {
+        this.navCtrl.navigateBack('/welcome-player');
+      },
+      error: err => {
+        console.warn(`Registration failed: ${err.message}`);
       }
-    )
-  } 
+    })
+
+/*     return this.httpClient.post(authUrl, payload).subscribe({
+      next: () => {
+        this.navCtrl.navigateBack('/home');
+      },
+      error: err => {
+        console.warn(`Registration failed: ${err.message}`);
+      }
+    }
+    ) */
+  }
 
 
 }
