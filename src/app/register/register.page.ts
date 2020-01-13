@@ -44,7 +44,7 @@ export class RegisterPage implements OnInit {
       "pseudo": form.value.pseudo,
       "password": form.value.password,
       "birthDate": form.value.birthDate,
-      "picture": "https://banner2.cleanpng.com/20180722/gfc/kisspng-user-profile-2018-in-sight-user-conference-expo-5b554c0968c377.0307553315323166814291.jpg",
+      "picture": "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y",
       "gender": form.controls['gender'].value
     };
 
