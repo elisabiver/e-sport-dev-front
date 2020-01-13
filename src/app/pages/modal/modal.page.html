@@ -19,7 +19,7 @@
       <p>{{ player.birthDate | date:'d MMMM y' }}</p>
       <p> {{ player.gender }}</p>
     </ion-label>
-    <ion-checkbox (click)="selectPlayer(player)" value={{player.id}} color="primary" slot="end"></ion-checkbox>
+    <ion-checkbox (click)="selectPlayer(player)" value={{player._id}} color="primary" slot="end"></ion-checkbox>
   </ion-item>
 </ion-list>
 </ion-content>
