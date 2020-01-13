@@ -20,7 +20,7 @@ export class WelcomeTournamentPage implements OnInit {
   constructor(private geolocation: Geolocation) { }
     
   ngOnInit() {
-    this.mapMarkers.push(marker([50.2482499,19.0184438], { icon: defaultIcon }))
+    this.mapMarkers.push(marker([50.2482499,19.0184438], { icon: defaultIcon }).bindPopup('ESL'))
     this.mapOptions = {
       layers: [
         tileLayer(
@@ -34,8 +34,7 @@ export class WelcomeTournamentPage implements OnInit {
 
     this.geolocation.getCurrentPosition().then((position: Geoposition) => {
       const coords = position.coords;
-      this.mapMarkers.push(marker([coords.latitude, coords.longitude], { icon: defaultIcon }))
-    console.log(`User is at ${coords.longitude}, ${coords.latitude}`);
+      this.mapMarkers.push(marker([coords.latitude, coords.longitude], { icon: defaultIcon }).bindPopup("Your current position"))
     }).catch(err => {
       console.warn(`Could not retrieve user position because: ${err.message}`);
     }); 
