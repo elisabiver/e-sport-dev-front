@@ -9,10 +9,12 @@
 <ion-content>
   <form #teamForm="ngForm" (submit)="createTeam(teamForm)" methos="post">
     <ion-item>
-      <ion-label position="floating">Team name</ion-label>
+      <ion-label position="floating">Enter team name</ion-label>
       <ion-input ngModel type="text" name="name" required></ion-input>
-    </ion-item> 
-    <ion-button type="button" (click)="openModal()" expand="full" >Add Player</ion-button> 
+    </ion-item>
+    <section id="add_player">
+      <ion-button shape="round" type="button" (click)="openModal()"><ion-icon name="add"></ion-icon>Add Player</ion-button>
+    </section>
     <ion-input type="image" placeholder="Image" name="image" required></ion-input>
     <ion-list *ngIf=datas>
       <ion-item *ngFor="let data of datas">
@@ -26,8 +28,9 @@
           <p> {{ selectedPlayers.gender }}</p>
         </ion-label>
       </ion-item>
-    </ion-list> 
-    <ion-button type="submit" expand="block" >Create Team</ion-button> 
+    </ion-list>
+    <section id="create_team">
+      <ion-button shape="round" type="submit">Create Team</ion-button>
+    </section>
   </form>
 </ion-content>
-
