@@ -10,17 +10,29 @@
 </ion-header>
 
 <ion-content>
-    <form #createPlayer="ngForm">
-    <ion-item>
-      <ion-label>Sort by</ion-label>
-      <ion-select placeholder="nickname">
-        <ion-select-option value="nickname">Nickname</ion-select-option>
-        <ion-select-option value="name">Name</ion-select-option>
-        <ion-select-option value="team">Team</ion-select-option>
-        <ion-select-option value="tournament">Tournament</ion-select-option>
-      </ion-select>
-    </ion-item> 
-  </form> 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="9">
+        <form #createPlayer="ngForm">
+          <ion-item>
+            <ion-label>Sort by</ion-label>
+            <ion-select (ionChange)="sortPlayers($event.detail.value)" placeholder="Newest">
+              <ion-select-option value="createdAt">Oldest</ion-select-option>
+              <ion-select-option value="pseudo">Pseudo</ion-select-option>
+              <ion-select-option value="firstName">First Name</ion-select-option>
+              <ion-select-option value="lastName">Last Name</ion-select-option>
+              <ion-select-option value="BirthDate">Age</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </form>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)=reverseSort()>Reverse</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 
   <ion-list>
     <ion-item *ngFor="let player of players">

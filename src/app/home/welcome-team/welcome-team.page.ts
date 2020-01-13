@@ -17,15 +17,15 @@ export class WelcomeTeamPage implements OnInit {
 
   constructor(private auth: AuthService, private route: ActivatedRoute, public http: HttpClient, private location: Location) { }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
 
     const urlTeam = `api/team/${this.id}`;
 
-    this.http.get<Team[]>(urlTeam).subscribe(result => {
-      this.team = result[0];
+    this.http.get<Team>(urlTeam).subscribe(result => {
+      this.team = result;
     });
 
   }
