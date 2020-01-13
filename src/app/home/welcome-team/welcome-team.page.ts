@@ -23,10 +23,16 @@ export class WelcomeTeamPage implements OnInit {
     });
 
     const urlTeam = `api/team/${this.id}`;
+    
+       // récuperer la team depuis le cache
+      // this.team.getCache()
 
     this.http.get<Team>(urlTeam).subscribe(result => {
       this.team = result;
+      console.log(this.team);
     });
+
+ 
 
   }
 

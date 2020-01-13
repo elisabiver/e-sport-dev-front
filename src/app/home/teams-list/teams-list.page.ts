@@ -5,6 +5,8 @@ import { Team } from 'src/app/models/team';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { SelectorMatcher } from '@angular/compiler';
+import { CacheService } from 'src/app/services/cache-service.service';
 
 @Component({
   selector: 'app-teams-list',
@@ -15,7 +17,8 @@ export class TeamsListPage implements OnInit {
   teams: Array<Team> = [];
   
 
-  constructor(private auth: AuthService, public http: HttpClient, private router: Router, private route: ActivatedRoute) {
+  // injecter le service pour le cache des teams
+  constructor(private auth: AuthService, public http: HttpClient, private router: Router, private route: ActivatedRoute, private cache: CacheService<Team>) {
     this.teams = [];
   }
 
@@ -32,6 +35,8 @@ export class TeamsListPage implements OnInit {
   }
 
   DisplayTeamByID(Team) {
+    // ajouter la team dans le cache
+   // this.teams.SetCache();
     this.router.navigate(['home/welcome-team', Team._id]);
   }
 
