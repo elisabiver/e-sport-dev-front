@@ -19,7 +19,7 @@ export class CreateTeamPage implements OnInit {
 
   constructor(private teamService: TeamService,
     private modalController: ModalController,
-    private navControlelr: NavController) {
+    private navController: NavController) {
     this.teams = [];
     this.players = [];
    }

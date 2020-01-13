@@ -34,8 +34,9 @@ export class ModalPage implements OnInit {
   selectPlayer(player){
     
     if (this.selectedPlayers.includes(player)) {
-      this.selectedPlayers.filter(user => user._id !== player._id);
-    }else{
+      //this.selectedPlayers.filter(user => user._id !== player._id);
+      this.selectedPlayers.splice(this.selectedPlayers.indexOf(player),1);
+    }else{ 
       this.selectedPlayers.push(player);
     }
     console.log(this.selectedPlayers);
