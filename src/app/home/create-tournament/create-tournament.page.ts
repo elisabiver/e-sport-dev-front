@@ -27,12 +27,6 @@ export class CreateTournamentPage implements OnInit {
 
   }
 
-/*   createTournament(form: NgForm){
-    console.log(form);
-    this.tournamentService.createTournament(form.value).subscribe();
-    console.log("test")
-  } */
-
   createTournament(form: NgForm){
     let payload = {
       "name": form.value.name,
