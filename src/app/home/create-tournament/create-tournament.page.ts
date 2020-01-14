@@ -36,13 +36,13 @@ export class CreateTournamentPage implements OnInit {
   createTournament(form: NgForm){
     var long = 0;
     var lat = 0;
-    if(form.value.latitude == empty){
+    if(form.value.latitude === null){
         long = this.c.latitude 
     }else{
         long = form.value.latitude
     }
 
-    if(form.value.longitude == empty){
+    if(form.value.longitude == null){
       long = this.c.longitude 
     }else{
       long = form.value.longitude
@@ -70,6 +70,4 @@ export class CreateTournamentPage implements OnInit {
   this.tournamentService.createTournament(payload).subscribe();
     
   }
-  
-
-}
+} 
