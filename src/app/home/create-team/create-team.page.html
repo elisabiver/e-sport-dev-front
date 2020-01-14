@@ -14,16 +14,16 @@
     </ion-item> 
     <ion-button type="button" (click)="openModal()" expand="full" >Add Player</ion-button> 
     <ion-input type="image" placeholder="Image" name="image" required></ion-input>
-    <ion-list *ngIf=datas>
-      <ion-item *ngFor="let data of datas">
+    <ion-list>
+      <ion-item *ngFor="let d of datas">
         <ion-avatar slot="start">
           <img src="/assets/images/Atlantadafran.png">
         </ion-avatar>
         <ion-label>
-          <h2>{{ data.pseudo }}</h2>
-          <h3>{{ selectedPlayers.firstName }} {{ player.lastName }}</h3>
-          <p>{{ selectedPlayers.birthDate | date:'d MMMM y' }}</p>
-          <p> {{ selectedPlayers.gender }}</p>
+          <h2>{{ d.pseudo }}</h2>
+          <h3>{{ d.firstName }} {{ d.lastName }}</h3>
+          <p>{{ d.birthDate | date:'d MMMM y' }}</p>
+          <p> {{ d.gender }}</p>
         </ion-label>
       </ion-item>
     </ion-list> 
