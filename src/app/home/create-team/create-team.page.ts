@@ -4,7 +4,8 @@ import { Team } from 'src/app/models/team';
 import { TeamService } from 'src/app/team.service';
 import { ModalController, NavController } from '@ionic/angular';
 import { ModalPage } from 'src/app/pages/modal/modal.page';
-
+import { User } from 'src/app/models/user';
+import {OverlayEventDetail} from '@ionic/core'; 
 
 @Component({
   selector: 'app-create-team',
@@ -14,11 +15,15 @@ import { ModalPage } from 'src/app/pages/modal/modal.page';
 export class CreateTeamPage implements OnInit {
 
   teams: Team[];
+  players: User[];
+  datas: User[];
 
   constructor(private teamService: TeamService,
     private modalController: ModalController,
-    private navControlelr: NavController) {
+    private navController: NavController) {
     this.teams = [];
+    this.players = [];
+    this.datas = [];
    }
 
   ngOnInit() {
@@ -28,10 +33,20 @@ export class CreateTeamPage implements OnInit {
     const modal = await this.modalController.create({
       component: ModalPage,
       componentProps: {
-        
+
       }
     });
     modal.present();
+    //console.log(await modal.onDidDismiss());
+    await modal.onDidDismiss().then((datas: OverlayEventDetail) => {
+      
+      this.datas = datas.data; 
+      console.log( datas);
+    });
+    
+    
+    //this.datas = datas;
+    //this.players = 
   }
 
   createTeam(form: NgForm){
@@ -46,3 +61,8 @@ export class CreateTeamPage implements OnInit {
   }
 
 }
+
+
+// afficher sur create-team tous les players sélectionnés
+// limiter la sélection à x players
+// faire le post sur la base de données

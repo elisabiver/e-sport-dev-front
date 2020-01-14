@@ -3,15 +3,14 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Create a new tournament</ion-title>
+    <ion-title>Create new tournament</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form #tournamentForm="ngForm" (ngSubmit)="createTournament(tournamentForm)"
-    method="post">
+  <form #tournamentForm="ngForm" (ngSubmit)="createTournament(tournamentForm)" method="post">
     <ion-item>
-      <ion-label position="floating">Name</ion-label>
+      <ion-label position="floating">Tournament's name</ion-label>
       <ion-input ngModel name="name" required></ion-input>
     </ion-item>
 
@@ -30,18 +29,21 @@
     <ion-item>
       <ion-label NgModel name="location" position="floating">Latitude</ion-label>
       <ion-input name="latitude"></ion-input>
+      <ion-note>if you wish to use your own current coordinates (your current location), just leave the latitude and
+        longitude blank.</ion-note>
 
     </ion-item>
     <ion-item>
       <ion-label NgModel name="location" position="floating">Longitude</ion-label>
       <ion-input name="longitude"></ion-input>
     </ion-item>
-    
+
     <ion-item>
       <ion-label position="floating">Your Team</ion-label>
       <ion-input ngModel name="team" required></ion-input>
     </ion-item>
-
-    <ion-button type="submit" expand="block">Create tournament</ion-button>
+    <section id="create_tournament">
+      <ion-button shape="round" type="submit">Create tournament</ion-button>
+    </section>
   </form>
 </ion-content>

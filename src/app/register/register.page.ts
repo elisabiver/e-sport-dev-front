@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,8 @@ export class RegisterPage implements OnInit {
     private httpClient: HttpClient,
     private authService: AuthService,
     private router: Router,
-    private navCtrl: NavController
+    private location: Location,
+    private navCtrl: NavController,
   ) {
     this.players = [];
   }
@@ -28,8 +30,8 @@ export class RegisterPage implements OnInit {
   }
 
   // Dismiss Register Modal
-  dismissRegister() {
-    this.modalController.dismiss();
+  goBackLogin() {
+    this.location.back();
   }
 
   // Register datas from form
