@@ -10,7 +10,7 @@
 <ion-content>
   <h1 id="av">All available tournaments</h1>
   <section *ngFor="let tournament of tournaments">
-    <ion-button expand="block">{{ tournament.name }}</ion-button>
+    <ion-button (click)="DisplayTournamentByID(tournament)" expand="block">{{ tournament.name }}</ion-button>
   </section>
   <section id="add_tournament">
     <ion-button shape="round" (click)="GoToCreateTournament()"><ion-icon name="add"></ion-icon> Add tournament</ion-button>

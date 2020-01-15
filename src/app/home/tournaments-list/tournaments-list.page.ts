@@ -10,10 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./tournaments-list.page.scss'],
 })
 export class TournamentsListPage implements OnInit {
+  tournaments: Array<Tournament> = [];
 
-  tournaments: Tournament[];
-
-  constructor(private auth: AuthService, public http: HttpClient, private router: Router) {
+  constructor(public http: HttpClient, private router: Router) {
     this.tournaments = [];
   }
 
@@ -25,8 +24,22 @@ export class TournamentsListPage implements OnInit {
     });
   }
 
+  // ngOnInit() {
+  //   const url = `/api/team`;
+  //   this.http.get<Team[]>(url).subscribe(teams => {
+  //     console.log(`Team loaded`, teams);
+  //     this.teams = teams;
+  //   });
+  // }
+
   GoToCreateTournament() {
     this.router.navigateByUrl('home/create-tournament');
+  }
+
+  DisplayTournamentByID(Tournament) {
+    // ajouter le tournament dans le cache
+   // this.tournament.SetCache();
+    this.router.navigate(['home/welcome-tournament', Tournament._id]);
   }
 
 }
