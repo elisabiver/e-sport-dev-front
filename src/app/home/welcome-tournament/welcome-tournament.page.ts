@@ -3,6 +3,10 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Geoposition } from '@ionic-native/geolocation/ngx';
 import { defaultIcon } from 'src/app/home/welcome-tournament/default-marker';
 import { latLng, MapOptions, marker, Marker, tileLayer, Map } from 'leaflet';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
+import { Tournament } from 'src/app/models/tournament';
 
 @Component({
   selector: 'app-welcome-tournament',
@@ -10,6 +14,10 @@ import { latLng, MapOptions, marker, Marker, tileLayer, Map } from 'leaflet';
   styleUrls: ['./welcome-tournament.page.scss'],
 })
 export class WelcomeTournamentPage implements OnInit {
+  id: string;
+  name: string;
+  // lat : number;
+  tournament: Tournament;
   mapOptions: MapOptions;
   mapMarkers= [] ;
 
@@ -17,10 +25,24 @@ export class WelcomeTournamentPage implements OnInit {
     setTimeout(() => map.invalidateSize(), 0);
   }
 
-  constructor(private geolocation: Geolocation) { }
+  constructor(private geolocation: Geolocation, private route: ActivatedRoute, public http: HttpClient, private location: Location) { }
     
   ngOnInit() {
-    this.mapMarkers.push(marker([50.2482499,19.0184438], { icon: defaultIcon }).bindPopup('ESL'))
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+
+    const urlTournament = `api/tournament/${this.id}`;
+    
+       // récuperer le tournament depuis le cache
+      // this.tournament.getCache()
+
+    this.http.get<Tournament>(urlTournament).subscribe(result => {
+      this.tournament = result;
+      console.log(this.tournament);
+      this.mapMarkers.push(marker([this.tournament.location.coordinates[0],this.tournament.location.coordinates[1]], { icon: defaultIcon }).bindPopup(this.tournament.name))
+    });
+
     this.mapOptions = {
       layers: [
         tileLayer(
@@ -38,5 +60,9 @@ export class WelcomeTournamentPage implements OnInit {
     }).catch(err => {
       console.warn(`Could not retrieve user position because: ${err.message}`);
     }); 
+  }
+
+  GoBack() {
+    this.location.back();
   }
 }

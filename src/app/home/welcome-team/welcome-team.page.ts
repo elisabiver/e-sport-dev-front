@@ -11,7 +11,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./welcome-team.page.scss'],
 })
 export class WelcomeTeamPage implements OnInit {
-
   id: string;
   team: Team;
 

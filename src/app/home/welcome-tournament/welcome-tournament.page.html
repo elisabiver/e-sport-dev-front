@@ -4,10 +4,20 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>welcome-tournament</ion-title>
+    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large" ></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card *ngIf="tournament">
+    <ion-card-header>
+      <ion-card-title>{{ tournament.name }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
   <div id="mapBox">
     <div class="leaflet-map" leaflet [leafletOptions]="mapOptions" (leafletMapReady)="onMapReady($event)" [leafletLayers]="mapMarkers"></div>
   </div>
