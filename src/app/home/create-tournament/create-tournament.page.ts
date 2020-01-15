@@ -4,8 +4,13 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { TournamentService } from 'src/app/tournament.service'
 import { HttpClient } from '@angular/common/http';
 import { Tournament } from 'src/app/models/tournament';
+import { ModalController, NavController } from '@ionic/angular';
+import { ModalTPage } from 'src/app/pages/modal-t/modal-t.page';
+import {OverlayEventDetail} from '@ionic/core';
+import { Team } from 'src/app/models/team';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Geoposition } from '@ionic-native/geolocation/ngx';
+import { Router } from '@angular/router';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { empty } from 'rxjs';
 
@@ -19,9 +24,20 @@ export class CreateTournamentPage implements OnInit {
 
   tournaments: Tournament[];
   c: Coordinates;
+  datas:[];
+  teams: Team[];
   
-  constructor(private tournamentService: TournamentService, private http: HttpClient, private geolocation: Geolocation) {
+  constructor(
+    private tournamentService: TournamentService, 
+    private http: HttpClient,
+    private modalController: ModalController,
+    private navController: NavController,
+    private router: Router, 
+    private geolocation: Geolocation) {
+      
     this.tournaments = [];
+    this.datas = [];
+    this.teams = [];
    }
 
   ngOnInit() {
@@ -33,6 +49,22 @@ export class CreateTournamentPage implements OnInit {
     }); 
   }
 
+  async openModalTournament(){
+    const modal = await this.modalController.create({
+      component: ModalTPage,
+      componentProps: {
+
+      }
+    });
+    modal.present();
+    //console.log(await modal.onDidDismiss());
+    await modal.onDidDismiss().then((datas: OverlayEventDetail) => {
+      
+      this.datas = datas.data; 
+      console.log(this.datas);
+    });
+  }
+    
   createTournament(form: NgForm){
     var long = 0;
     var lat = 0;
@@ -53,7 +85,7 @@ export class CreateTournamentPage implements OnInit {
         type : "Point",
         coordinates : [lat , long]
       },
-      teams: form.value.teams,
+      teams: this.datas,
       name : form.value.name,
       // {
       //   "location": {
@@ -68,6 +100,8 @@ export class CreateTournamentPage implements OnInit {
 
     
   this.tournamentService.createTournament(payload).subscribe();
+  this.router.navigateByUrl('home/tournament-list');
+
     
   }
 } 

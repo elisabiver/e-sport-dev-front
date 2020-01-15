@@ -6,6 +6,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { ModalPage } from 'src/app/pages/modal/modal.page';
 import { User } from 'src/app/models/user';
 import {OverlayEventDetail} from '@ionic/core'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-team',
@@ -20,7 +21,8 @@ export class CreateTeamPage implements OnInit {
 
   constructor(private teamService: TeamService,
     private modalController: ModalController,
-    private navController: NavController) {
+    private navController: NavController,
+    private router: Router) {
     this.teams = [];
     this.players = [];
     this.datas = [];
@@ -50,12 +52,12 @@ export class CreateTeamPage implements OnInit {
     let payload = {
       name: form.value.name,
       players: this.datas,
-     // "players": this.datas,
       logo: "http//photo",
     };
     this.teamService.createTeam(payload).subscribe();
     console.log("test");
     console.log(payload);
+    this.router.navigateByUrl('home/teams-list');
   }
 
 }

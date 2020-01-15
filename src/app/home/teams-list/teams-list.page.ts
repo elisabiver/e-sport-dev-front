@@ -36,7 +36,7 @@ export class TeamsListPage implements OnInit {
 
   DisplayTeamByID(Team) {
     // ajouter la team dans le cache
-   // this.teams.SetCache();
+   this.cache.setCache(Team);
     this.router.navigate(['home/welcome-team', Team._id]);
   }
 

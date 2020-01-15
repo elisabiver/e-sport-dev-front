@@ -17,11 +17,12 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ModalPageModule } from './pages/modal/modal.module';
+import { ModalTPageModule } from './pages/modal-t/modal-t.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, IonicStorageModule.forRoot(), LeafletModule.forRoot(), ModalPageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, IonicStorageModule.forRoot(), LeafletModule.forRoot(), ModalPageModule, ModalTPageModule],
   providers: [
     StatusBar,
     Geolocation,
