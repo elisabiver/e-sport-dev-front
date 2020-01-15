@@ -11,9 +11,9 @@
 
   <h1 id="av">All available teams</h1>
   <section *ngFor="let team of teams">
-    <ion-button (click)="DisplayTeamByID(team)" expand="block">{{ team.name }}</ion-button> 
+    <ion-button (click)="displayTeamByID(team)" expand="block">{{ team.name }}</ion-button> 
   </section>
   <section id="add_team">
-    <ion-button shape="round" (click)="GoToCreateTeam()"><ion-icon name="add"></ion-icon>Add team</ion-button>
+    <ion-button shape="round" (click)="goToCreateTeam()"><ion-icon name="add"></ion-icon>Add team</ion-button>
   </section>
 </ion-content>

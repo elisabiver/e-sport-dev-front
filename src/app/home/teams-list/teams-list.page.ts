@@ -18,7 +18,11 @@ export class TeamsListPage implements OnInit {
   
 
   // injecter le service pour le cache des teams
-  constructor(private auth: AuthService, public http: HttpClient, private router: Router, private route: ActivatedRoute, private cache: CacheService<Team>) {
+  constructor(private auth: AuthService, 
+    public http: HttpClient, 
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private cache: CacheService<Team>) {
     this.teams = [];
   }
 
@@ -30,11 +34,11 @@ export class TeamsListPage implements OnInit {
     });
   }
 
-  GoToCreateTeam() {
+  goToCreateTeam() {
     this.router.navigateByUrl('home/create-team');
   }
 
-  DisplayTeamByID(Team) {
+  displayTeamByID(Team) {
     // ajouter la team dans le cache
    // this.teams.SetCache();
     this.router.navigate(['home/welcome-team', Team._id]);
