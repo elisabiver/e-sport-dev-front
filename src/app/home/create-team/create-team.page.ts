@@ -41,19 +41,17 @@ export class CreateTeamPage implements OnInit {
     await modal.onDidDismiss().then((datas: OverlayEventDetail) => {
       
       this.datas = datas.data; 
-      console.log( datas);
+      console.log(datas);
     });
     
-    
-    //this.datas = datas;
-    //this.players = 
   }
 
   createTeam(form: NgForm){
     let payload = {
-      "name": form.value.name,
-      "players": [form.value.player],
-      "logo": "http//photo",
+      name: form.value.name,
+      players: this.datas,
+     // "players": this.datas,
+      logo: "http//photo",
     };
     this.teamService.createTeam(payload).subscribe();
     console.log("test");

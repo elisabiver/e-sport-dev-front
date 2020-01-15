@@ -61,7 +61,7 @@ export class CreateTournamentPage implements OnInit {
       //     "coordinates": [
       //         -73.856077,
       //         40.848447
-      //     ]
+      //     ] 
       // },
      
   };
