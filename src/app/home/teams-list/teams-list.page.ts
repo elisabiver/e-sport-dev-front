@@ -15,7 +15,7 @@ import { CacheService } from 'src/app/services/cache-service.service';
 })
 export class TeamsListPage implements OnInit {
   teams: Array<Team> = [];
-  
+
 
   // injecter le service pour le cache des teams
   constructor(private auth: AuthService, 
@@ -40,8 +40,19 @@ export class TeamsListPage implements OnInit {
 
   displayTeamByID(Team) {
     // ajouter la team dans le cache
-   this.cache.setCache(Team);
+    this.cache.setCache(Team);
     this.router.navigate(['home/welcome-team', Team._id]);
   }
+
+
+  ionViewWillEnter(){
+    const url = `/api/team`;
+    this.http.get<Team[]>(url).subscribe(teams => {
+      console.log(`Team loaded`, teams);
+      this.teams = teams;
+    });
+
+  }
+
 
 }

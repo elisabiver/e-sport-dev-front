@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Edit your Team</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #teamForm="ngForm" (submit)="updateTeam()" method="patch">
+    <ion-item>
+      <ion-label position="floating">New team name</ion-label>
+      <ion-input ngModel type="text" name="name" required></ion-input>
+    </ion-item>
+    <section>
+      <ion-button shape="round" type="button" (click)="openModal()"><ion-icon name="add"></ion-icon>Change Players</ion-button>
+    </section>
+    <ion-input type="image" placeholder="Image" name="image" required></ion-input>
+    <ion-list>
+      <ion-item *ngFor="let d of datas">
+        <ion-avatar slot="start">
+          <img src="/assets/images/Atlantadafran.png">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ d.pseudo }}</h2>
+          <h3>{{ d.firstName }} {{ d.lastName }}</h3>
+          <p>{{ d.birthDate | date:'d MMMM y' }}</p>
+          <p> {{ d.gender }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <section id="create_team">
+      <ion-button shape="round" type="submit">Update Team</ion-button>
+    </section>
+  </form>
+</ion-content>
