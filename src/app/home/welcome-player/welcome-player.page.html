@@ -20,12 +20,10 @@
       <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
     </ion-avatar>
   </ion-item>
-  <ion-item *ngFor="let team of teams">
-    <h2>Your teams</h2>
-    <form #teamForm="ngForm">
-      <ion-button>team</ion-button>
-    </form>
-  </ion-item>
+  <h3>My teams</h3>
+  <section *ngFor="let team of teams">
+    <ion-button expand="block">{{ team.name }}</ion-button>
+  </section>
   <ion-item>
     <h2>Your tournaments</h2>
     <ion-button>tournament</ion-button>
