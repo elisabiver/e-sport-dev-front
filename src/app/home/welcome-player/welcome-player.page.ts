@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/models/user';
 import { Team } from 'src/app/models/team';
 import { filter, map, tap } from 'rxjs/operators';
+import { Tournament } from 'src/app/models/tournament';
 
 @Component({
   selector: 'app-welcome-player',
@@ -16,6 +17,7 @@ export class WelcomePlayerPage implements OnInit {
   player: User;
   teams: Team[];
   teamsOfPlayer: Team[];
+  tournaments: Tournament[];
 
   constructor(private auth: AuthService,
     private router: Router,
@@ -23,6 +25,7 @@ export class WelcomePlayerPage implements OnInit {
     public http: HttpClient) {
     this.teamsOfPlayer = [];
     this.teams = [];
+    this.tournaments = [];
   }
 
   ngOnInit() {
@@ -32,15 +35,26 @@ export class WelcomePlayerPage implements OnInit {
     })
     this.getCurrentUser();
 
+  }
+
+  ionViewWillEnter() {
     const urlTeam = `/api/team`;
     this.http.get<Team[]>(urlTeam).pipe(
-      tap(console.log),
+      //tap(console.log),
       map(teams => teams.filter(team => team.players.includes(this.player._id)))
-      ).subscribe(team => {
+    ).subscribe(team => {
       this.teams = team;
-      console.log(this.teams)
-    })
+      //console.log(this.teams)
+    });
 
+    const urlTournament = `/api/tournament`;
+    this.http.get<Tournament[]>(urlTournament).pipe(
+      tap(console.log),
+      map(tournaments => tournaments.filter(tournament => tournament.teams.includes(this.teams)))
+    ).subscribe(tournament => {
+      this.tournaments = tournament;
+      console.log(this.tournaments)
+    });
   }
 
   getCurrentUser() {
