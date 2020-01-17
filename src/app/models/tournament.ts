@@ -4,6 +4,6 @@ export class Tournament {
       type: string,
       coordinates: number[]
     };
-    teams: string;
+    teams: string[];
     createdAt: string;
   }

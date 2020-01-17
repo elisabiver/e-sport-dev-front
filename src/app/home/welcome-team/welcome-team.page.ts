@@ -14,6 +14,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./welcome-team.page.scss'],
 })
 export class WelcomeTeamPage implements OnInit {
+
   id: string;
   team: Team;
 
@@ -45,13 +46,32 @@ export class WelcomeTeamPage implements OnInit {
 
   }
 
+  ionViewWillEnter(){
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+
+    const urlTeam = `api/team/${this.id}`;
+    
+       // récuperer la team depuis le cache
+      // this.team.getCache()
+      //this.cache.getCache();
+
+    this.http.get<Team>(urlTeam).subscribe(result => {
+      this.team = result;
+      console.log(this.team);
+    });
+  }
+  
+
   GoBack() {
     this.location.back();
   }
   
 
   updateTeamPath(){
-    this.router.navigateByUrl('home/edit-team');
+    this.router.navigate(['home/edit-team', this.id]);
+   // this.router.navigateByUrl(['/home/edit-team', this.id]);
   }
 
 
