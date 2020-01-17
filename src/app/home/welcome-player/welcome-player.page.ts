@@ -53,7 +53,7 @@ export class WelcomePlayerPage implements OnInit {
       map(tournaments => tournaments.filter(tournament => tournament.teams.includes(this.teams)))
     ).subscribe(tournament => {
       this.tournaments = tournament;
-      console.log(this.tournaments)
+      console.log(this.tournaments);
     });
   }
 

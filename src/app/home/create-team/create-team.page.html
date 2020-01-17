@@ -4,10 +4,11 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Create a new team</ion-title>
+    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large" ></ion-icon>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form #teamForm="ngForm" (submit)="createTeam(teamForm)" methos="post">
+  <form #teamForm="ngForm" (submit)="createTeam(teamForm)" method="post">
     <ion-item>
       <ion-label position="floating">Enter team name</ion-label>
       <ion-input ngModel type="text" name="name" required></ion-input>
