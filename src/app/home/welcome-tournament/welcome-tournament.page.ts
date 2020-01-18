@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Geoposition } from '@ionic-native/geolocation/ngx';
 import { defaultIcon } from 'src/app/home/welcome-tournament/default-marker';
+import { customIcon } from 'src/app/home/welcome-tournament/custom-marker';
 import { latLng, MapOptions, marker, Marker, tileLayer, Map } from 'leaflet';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -56,7 +57,7 @@ export class WelcomeTournamentPage implements OnInit {
 
     this.geolocation.getCurrentPosition().then((position: Geoposition) => {
       const coords = position.coords;
-      this.mapMarkers.push(marker([coords.latitude, coords.longitude], { icon: defaultIcon }).bindPopup("Your current position"))
+      this.mapMarkers.push(marker([coords.latitude, coords.longitude], { icon: customIcon }).bindPopup("Your current position"))
     }).catch(err => {
       console.warn(`Could not retrieve user position because: ${err.message}`);
     }); 

@@ -57,8 +57,6 @@ export class WelcomePlayerPage implements OnInit {
       });
       console.log(this.teams, "teams de moi")
     });
-
-
   }
 
   getCurrentUser() {

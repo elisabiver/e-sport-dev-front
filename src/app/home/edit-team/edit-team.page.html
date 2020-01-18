@@ -4,10 +4,11 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Edit your Team</ion-title>
+    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large" ></ion-icon>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form #teamForm="ngForm" (submit)="updateTeam()" method="patch">
+  <form #updateTeamForm="ngForm" (submit)="updateTeam(updateTeamForm)" method="patch">
     <ion-item>
       <ion-label position="floating">New team name</ion-label>
       <ion-input ngModel type="text" name="name" required></ion-input>
