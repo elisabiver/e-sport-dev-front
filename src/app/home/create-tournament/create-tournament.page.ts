@@ -100,7 +100,7 @@ export class CreateTournamentPage implements OnInit {
 
     
   this.tournamentService.createTournament(payload).subscribe();
-  this.router.navigateByUrl('home/tournament-list');
+  this.router.navigateByUrl('home/tournaments-list');
 
     
   }

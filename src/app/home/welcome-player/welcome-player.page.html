@@ -26,6 +26,9 @@
   </section>
   <ion-item>
     <h2>Your tournaments</h2>
+    <section *ngFor="let tournament of tournaments">
+      <ion-button expand="block">{{ tournament._id }}</ion-button>
+    </section>
     <ion-button>tournament</ion-button>
   </ion-item>
 </ion-content>
