@@ -15,6 +15,16 @@
     </ion-card-header>
   
     <ion-card-content>
+      <ion-title>
+        <h3>Teams in Tournament</h3>
+      </ion-title>
+      <ion-list> 
+        <ion-item *ngFor="let team of tournament.teams">
+          <ion-label>
+            <h2>{{ team }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
 

@@ -68,16 +68,17 @@ export class CreateTournamentPage implements OnInit {
   createTournament(form: NgForm){
     var long = 0;
     var lat = 0;
-    if(form.value.latitude === null){
-        long = this.c.latitude 
+
+    if(form.value.latitude == null){
+      lat = this.c.latitude;
     }else{
-        long = form.value.latitude
+      lat = form.value.latitude;
     }
 
     if(form.value.longitude == null){
-      long = this.c.longitude 
+      long = this.c.longitude; 
     }else{
-      long = form.value.longitude
+      long = form.value.longitude;
     }
     
     let payload = {
