@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Tournament } from 'src/app/models/tournament';
 import { Router } from '@angular/router';
+import { CacheService } from 'src/app/services/cache-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tournaments-list',
@@ -12,7 +14,10 @@ import { Router } from '@angular/router';
 export class TournamentsListPage implements OnInit {
   tournaments: Array<Tournament> = [];
 
-  constructor(public http: HttpClient, private router: Router) {
+  constructor(public http: HttpClient,
+      private router: Router,
+      private route: ActivatedRoute, 
+      private cache: CacheService<Tournament>) {
     this.tournaments = [];
   }
 
@@ -24,22 +29,23 @@ export class TournamentsListPage implements OnInit {
     });
   }
 
-  // ngOnInit() {
-  //   const url = `/api/team`;
-  //   this.http.get<Team[]>(url).subscribe(teams => {
-  //     console.log(`Team loaded`, teams);
-  //     this.teams = teams;
-  //   });
-  // }
-
   GoToCreateTournament() {
     this.router.navigateByUrl('home/create-tournament');
   }
 
   DisplayTournamentByID(Tournament) {
     // ajouter le tournament dans le cache
-   // this.tournament.SetCache();
+    this.cache.setCache(Tournament);
     this.router.navigate(['home/welcome-tournament', Tournament._id]);
+  }
+
+  ionViewWillEnter(){
+    const url = `/api/tournament`;
+    this.http.get<Tournament[]>(url).subscribe(tournaments => {
+      console.log(`Tournaments loaded`, tournaments);
+      this.tournaments = tournaments;
+    });
+
   }
 
 }

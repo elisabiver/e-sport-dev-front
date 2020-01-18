@@ -32,31 +32,23 @@ export class WelcomeTeamPage implements OnInit {
 
     const urlTeam = `api/team/${this.id}`;
     
-       // récuperer la team depuis le cache
-      // this.team.getCache()
+      // récuperer la team depuis le cache
       this.cache.getCache();
 
     this.http.get<Team>(urlTeam).subscribe(result => {
       this.team = result;
       console.log(this.team);
     });
-
- 
-
   }
 
   GoBack() {
     this.location.back();
   }
   
-
   updateTeamPath(){
     this.router.navigateByUrl('home/edit-team');
   }
 
-
-  
-  
   deleteTeam(){
 
     const deleteUrl = `api/team/${this.id}`;
