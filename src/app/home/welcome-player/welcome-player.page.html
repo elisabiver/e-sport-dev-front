@@ -15,12 +15,11 @@
     </ion-toolbar>
   </ion-header>
   <ion-item>
-    <ion-label>{{player.firstName}} {{player.lastName}}</ion-label>
+    <ion-label>{{player.firstName}} {{player.lastName}}</ion-label> 
     <ion-button (click)="takePicture()" expand="block" ><ion-icon name="create"></ion-icon></ion-button>
     <ion-avatar slot="start"  class="ion-margin-start">
-      <img *ngIf='picture' [src]='player.picture' />
+      <img src={{player.picture}} />
     </ion-avatar>
-    
   </ion-item>
   <h3>My teams</h3>
   <section *ngFor="let team of teams">
