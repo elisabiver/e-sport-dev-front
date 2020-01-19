@@ -10,6 +10,13 @@
 </ion-header>
 
 <ion-content>
+  <ion-toolbar>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar (ioninput)="filterList($event)">
+
+    </ion-searchbar >
+  </ion-toolbar>
   <ion-grid>
     <ion-row>
       <ion-col size="9">
@@ -27,12 +34,25 @@
         </form>
       </ion-col>
       <ion-col>
-        <ion-button (click)=reverseSort()>Reverse</ion-button>
+        <ion-button size="small" (click)=reverseSort()>Reverse</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
 
+    <ion-item >
+      <ion-label>Gender filter</ion-label>
+      <ion-select  ngModel name="input"  (ionChange)="filterGender($event.detail.value)" placeholder="All">
+        <ion-select-option value="male">Male</ion-select-option>
+        <ion-select-option value="female">Female</ion-select-option>
+      <div *ngIf="location==='city'">
+        <ion-item *ngFor="let city of cityList">
+          <ion-select-option value="{{city}}">{{city}}</ion-select-option>
+        </ion-item> 
+        </div>
+      </ion-select>
+    </ion-item>
+           
 
   <ion-list>
     <ion-item *ngFor="let player of players">

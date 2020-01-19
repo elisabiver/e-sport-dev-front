@@ -13,6 +13,9 @@ import { OrderPipe } from 'ngx-order-pipe';
 export class PlayersListPage implements OnInit {
 
   players: User[];
+  filteredPlayers: User[];
+  gender: string;
+  input: string;
 
   constructor(private auth: AuthService, public http: HttpClient, private orderPipe: OrderPipe) {
     this.players = [];
@@ -25,6 +28,7 @@ export class PlayersListPage implements OnInit {
       console.log(`Player loaded`, players);
       this.players = players;
       this.players = this.orderPipe.transform(this.players, "CreatedAt", true);
+      this.filteredPlayers = this.players;
     });
     
   }
@@ -39,5 +43,15 @@ export class PlayersListPage implements OnInit {
 
   reverseSort(){
     this.players.reverse();
+  }
+
+  filterGender(event: any){
+    if(this.gender == "female"){
+      this.filteredPlayers = this.players.filter(players => players.gender == "female");
+    }else{
+      this.filteredPlayers = this.players.filter(players => players.gender == "male");
+    }
+    console.log(event);
+    console.log(this.filteredPlayers, "filtré")
   }
 }
