@@ -32,6 +32,19 @@ export class TournamentsListPage implements OnInit {
   //   });
   // }
 
+
+  ionViewWillEnter(){
+    
+    const url = `/api/tournament`;
+    this.http.get<Tournament[]>(url).subscribe(tournaments => {
+      console.log(`Tournament loaded`, tournaments);
+      this.tournaments = tournaments;
+    });
+
+  }
+
+
+
   GoToCreateTournament() {
     this.router.navigateByUrl('home/create-tournament');
   }

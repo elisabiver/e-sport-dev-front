@@ -22,4 +22,9 @@
     <div class="leaflet-map" leaflet [leafletOptions]="mapOptions" (leafletMapReady)="onMapReady($event)" [leafletLayers]="mapMarkers"></div>
   </div>
 
+
+
+  <ion-button  (click)="updateTournamentPath()" ><ion-icon name="create"></ion-icon></ion-button>
+  <ion-button (click)="deleteTournament()" ><ion-icon name="trash"></ion-icon></ion-button> 
+
 </ion-content>
