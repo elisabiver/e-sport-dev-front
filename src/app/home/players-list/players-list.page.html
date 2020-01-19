@@ -11,11 +11,9 @@
 
 <ion-content>
   <ion-toolbar>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-searchbar (ioninput)="filterList($event)">
+<!--     <ion-searchbar (ioninput)="filterList($event)">
 
-    </ion-searchbar >
+    </ion-searchbar > -->
   </ion-toolbar>
   <ion-grid>
     <ion-row>
@@ -40,16 +38,18 @@
   </ion-grid>
 
 
-    <ion-item >
+    <ion-item > 
       <ion-label>Gender filter</ion-label>
       <ion-select  ngModel name="input"  (ionChange)="filterGender($event.detail.value)" placeholder="All">
+        <ion-select-option value="all">All</ion-select-option>
         <ion-select-option value="male">Male</ion-select-option>
         <ion-select-option value="female">Female</ion-select-option>
-      <div *ngIf="location==='city'">
+
+<!--       <div *ngIf="location==='city'">
         <ion-item *ngFor="let city of cityList">
           <ion-select-option value="{{city}}">{{city}}</ion-select-option>
         </ion-item> 
-        </div>
+        </div> -->
       </ion-select>
     </ion-item>
            

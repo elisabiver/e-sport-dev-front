@@ -17,6 +17,7 @@ export class WelcomeTeamPage implements OnInit {
 
   id: string;
   team: Team;
+  cachedTeam:Team; 
 
   constructor(private auth: AuthService,
      private teamService: TeamService,
@@ -29,16 +30,23 @@ export class WelcomeTeamPage implements OnInit {
   ngOnInit() { 
     this.route.params.subscribe(params => {
       this.id = params['id'];
+
+         // récuperer la team depuis le cache
+    // this.cachedTeam =  this.cache;
+     console.log(this.cachedTeam); // Working 
     });
 
     const urlTeam = `api/team/${this.id}`;
     
       // récuperer la team depuis le cache
-      this.cache.getCache();
+  
+     
 
+/*
     this.http.get<Team>(urlTeam).subscribe(result => {
       this.team = result;
-    });
+      
+    }); */
   }
 
   ionViewWillEnter(){
@@ -46,16 +54,18 @@ export class WelcomeTeamPage implements OnInit {
       this.id = params['id'];
     });
 
-    const urlTeam = `api/team/${this.id}`;
+    //const urlTeam = `api/team/${this.id}`;
     
        // récuperer la team depuis le cache
       // this.team.getCache()
       //this.cache.getCache();
-
+/*
     this.http.get<Team>(urlTeam).subscribe(result => {
       this.team = result;
-      console.log(this.team);
+      //console.log(this.team);
+      
     });
+    */
   }
   
 
