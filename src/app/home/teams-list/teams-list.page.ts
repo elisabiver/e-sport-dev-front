@@ -44,6 +44,16 @@ export class TeamsListPage implements OnInit {
     this.router.navigate(['home/welcome-team', Team._id]);
   }
 
+  ionViewDidLeave(){
+    //console.log(this.cache);
+    if (this.cache.hasCache()){
+      console.log('has it');
+    }else {
+      console.log("doesn't have it")
+    }
+
+  }
+
 
   ionViewWillEnter(){
     const url = `/api/team`;

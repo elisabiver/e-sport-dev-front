@@ -48,26 +48,27 @@ export class WelcomePlayerPage implements OnInit {
 
   }
 
-  // ionViewWillEnter() {
-  //   const urlTeam = `/api/team`;
-  //   this.http.get<Team[]>(urlTeam).pipe(
-  //     tap(console.log),
-  //     map(teams => teams.filter(team => team.players.includes(this.player._id)))
-  //   ).subscribe(team => {
-  //     this.teams = team;
-  //     const urlTournament = `/api/tournament`;
-  //     // console.log(this.teams, "les teams avant ma fonction map")
-  //     this.http.get<Tournament[]>(urlTournament).pipe(
-  //       tap(console.log),
-  //       map(tournaments => tournaments.filter(tournament => tournament.teams.includes(this.teams)))
-  //     ).subscribe(tournament => {
-  //       this.tournaments = tournament;
-  //       console.log(this.teams, "ha")
-  //       console.log(this.tournaments, "tournaments")
-  //     });
-  //     console.log(this.teams, "teams de moi")
-  //   });
-  // }
+
+  ionViewWillEnter() {
+    const urlTeam = `/api/team`;
+    this.http.get<Team[]>(urlTeam).pipe(
+      tap(console.log),
+      map(teams => teams.filter(team => team.players.includes(this.player._id)))).subscribe(team => {
+
+      this.teams = team;
+
+      const urlTournament = `/api/tournament`;
+      console.log(this.teams, "les teams avant ma fonction map")
+      this.http.get<Tournament[]>(urlTournament).pipe(
+        tap(console.log),
+        map(tournaments => tournaments.filter(tournament => tournament.teams.includes(this.teams)))).subscribe(tournament => {
+        this.tournaments = tournament;
+        console.log(this.teams, "ha")
+        console.log(this.tournaments, "tournaments")
+      });
+      console.log(this.teams, "teams de moi")
+    });
+  }
 
   getCurrentUser() {
     return this.auth.getUser().subscribe(res => {

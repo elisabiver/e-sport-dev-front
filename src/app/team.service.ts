@@ -17,12 +17,4 @@ export class TeamService {
      const teamUrl = `api/team`;
      return this.http.post(teamUrl, payload);
    }
-
-   deleteTeam(){
-
-   }
-
-   editTeam(){
-     
-   }
 }

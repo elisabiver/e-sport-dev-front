@@ -29,6 +29,7 @@ export class TournamentsListPage implements OnInit {
     });
   }
 
+
   GoToCreateTournament() {
     this.router.navigateByUrl('home/create-tournament');
   }

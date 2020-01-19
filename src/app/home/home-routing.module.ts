@@ -54,7 +54,8 @@ const routes: Routes = [
         loadChildren: () => import('./teams-in-tournament-list/teams-in-tournament-list.module').then( m => m.TeamsInTournamentListPageModule)
       }
     ]
-  },  {
+  },
+  {
     path: 'edit-team',
     loadChildren: () => import('./edit-team/edit-team.module').then( m => m.EditTeamPageModule)
   },

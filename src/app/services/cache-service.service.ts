@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
  * This is a generic class to which you can specify the type of data that this cache should accept.
  */
 export class CacheService<T> {
-
+ 
   private cache: T;
 
   /**

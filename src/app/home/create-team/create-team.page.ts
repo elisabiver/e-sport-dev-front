@@ -70,7 +70,7 @@ export class CreateTeamPage implements OnInit {
         color: 'dark'
       });
       toastSuccess.present();
-      this,form.reset();
+      form.reset();
       this.datas.splice(0, this.datas.length)
       this.router.navigateByUrl('home/teams-list');
 

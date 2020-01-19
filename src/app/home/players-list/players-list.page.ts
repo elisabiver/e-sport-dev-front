@@ -13,6 +13,10 @@ import { OrderPipe } from 'ngx-order-pipe';
 export class PlayersListPage implements OnInit {
 
   players: User[];
+  filteredPlayers: User[];
+  gender: string;
+  input: string;
+  totalPlayersList: User[];
 
   constructor(private auth: AuthService, public http: HttpClient, private orderPipe: OrderPipe) {
     this.players = [];
@@ -25,19 +29,48 @@ export class PlayersListPage implements OnInit {
       console.log(`Player loaded`, players);
       this.players = players;
       this.players = this.orderPipe.transform(this.players, "CreatedAt", true);
+      this.totalPlayersList = this.players
     });
-    
+
   }
 
-  sortPlayers(prop: string){
+
+  sortPlayers(prop: string) {
 
     console.log(event);
     this.players = this.orderPipe.transform(this.players, prop, false, true);
     console.log(this.players);
-  
+
   }
 
-  reverseSort(){
+  reverseSort() {
     this.players.reverse();
   }
+
+  filterGender(event: any) {
+
+   
+    console.log(this.totalPlayersList);
+    switch (event) {
+
+      case 'female':
+        this.players = this.totalPlayersList; 
+        this.filteredPlayers = this.players.filter(players => players.gender == "female");
+        break;
+
+      case 'male':
+        this.players = this.totalPlayersList; 
+        this.filteredPlayers = this.players.filter(players => players.gender == "male");
+        break;
+
+      case 'all':
+        this.filteredPlayers = this.totalPlayersList
+        break;
+
+    }
+    console.log(event);
+    console.log(this.filteredPlayers, "filtré")
+    this.players = this.filteredPlayers;
+  }
+
 }
