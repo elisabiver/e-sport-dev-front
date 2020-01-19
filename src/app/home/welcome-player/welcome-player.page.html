@@ -16,9 +16,11 @@
   </ion-header>
   <ion-item>
     <ion-label>{{player.firstName}} {{player.lastName}}</ion-label>
+    <ion-button (click)="takePicture()" expand="block" ><ion-icon name="create"></ion-icon></ion-button>
     <ion-avatar slot="start"  class="ion-margin-start">
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      <img *ngIf='picture' [src]='player.picture' />
     </ion-avatar>
+    
   </ion-item>
   <h3>My teams</h3>
   <section *ngFor="let team of teams">
@@ -27,7 +29,7 @@
   <ion-item>
     <h2>Your tournaments</h2>
     <section *ngFor="let tournament of tournaments">
-      <ion-button expand="block">{{ tournament._id }}</ion-button>
+      <!-- <ion-button expand="block">{{ tournament._id }}</ion-button> -->
     </section>
     <ion-button>tournament</ion-button>
   </ion-item>
