@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { Tournament } from 'src/app/models/tournament';
 import { ToastController } from '@ionic/angular';
+import { CacheService } from 'src/app/services/cache-service.service';
+
 
 @Component({
   selector: 'app-welcome-tournament',
@@ -18,7 +20,6 @@ import { ToastController } from '@ionic/angular';
 export class WelcomeTournamentPage implements OnInit {
   id: string;
   name: string;
-  // lat : number;
   tournament: Tournament;
   mapOptions: MapOptions;
   mapMarkers= [] ;
@@ -27,12 +28,15 @@ export class WelcomeTournamentPage implements OnInit {
     setTimeout(() => map.invalidateSize(), 0);
   }
 
+
   constructor(private geolocation: Geolocation,
               private route: ActivatedRoute,
               public http: HttpClient,
               private toastController: ToastController,
               private location: Location,
+              private cache: CacheService<Tournament>,
               private router: Router) { }
+
     
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -41,8 +45,9 @@ export class WelcomeTournamentPage implements OnInit {
 
     const urlTournament = `api/tournament/${this.id}`;
     
-       // récuperer le tournament depuis le cache
-      // this.tournament.getCache()
+    // récuperer la team dans le tournament depuis le cache
+    this.cache.getCache()
+    console.log(this.cache);
 
     this.http.get<Tournament>(urlTournament).subscribe(result => {
       this.tournament = result;
@@ -57,7 +62,7 @@ export class WelcomeTournamentPage implements OnInit {
           { maxZoom: 18 }
         )
       ],
-      zoom: 5,
+      zoom: 7,
       center: latLng(46.778186, 6.641524)
     };
 

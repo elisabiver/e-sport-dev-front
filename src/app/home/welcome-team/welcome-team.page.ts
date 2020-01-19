@@ -33,16 +33,12 @@ export class WelcomeTeamPage implements OnInit {
 
     const urlTeam = `api/team/${this.id}`;
     
-       // récuperer la team depuis le cache
-      // this.team.getCache()
+      // récuperer la team depuis le cache
       this.cache.getCache();
 
     this.http.get<Team>(urlTeam).subscribe(result => {
       this.team = result;
     });
-
- 
-
   }
 
   ionViewWillEnter(){
@@ -68,15 +64,11 @@ export class WelcomeTeamPage implements OnInit {
     this.router.navigate(['home/teams-list'])
   }
   
-
   updateTeamPath(){
     this.router.navigate(['home/edit-team', this.id]);
    // this.router.navigateByUrl('/home/edit-team', this.id);
   }
 
-
-  
-  
   deleteTeam(){
 
     const deleteUrl = `api/team/${this.id}`;
