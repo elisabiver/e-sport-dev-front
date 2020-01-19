@@ -1,4 +1,5 @@
 export class Tournament {
+    _id: string; 
     name: string;
     location: {
       type: string,
