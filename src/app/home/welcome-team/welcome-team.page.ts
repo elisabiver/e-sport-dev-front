@@ -3,10 +3,10 @@ import { Team } from 'src/app/models/team';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/auth.service';
-import { Location } from '@angular/common';
 import { CacheService } from 'src/app/services/cache-service.service';
 import { TeamService } from 'src/app/team.service';
 import { NgForm } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-welcome-team',
@@ -22,8 +22,8 @@ export class WelcomeTeamPage implements OnInit {
      private teamService: TeamService,
      private route: ActivatedRoute,
      private router: Router,
+     private toastController: ToastController,
      public http: HttpClient, 
-     private location: Location, 
      private cache: CacheService<Team>) { }
 
   ngOnInit() { 
@@ -38,7 +38,6 @@ export class WelcomeTeamPage implements OnInit {
 
     this.http.get<Team>(urlTeam).subscribe(result => {
       this.team = result;
-      console.log(this.team);
     });
   }
 
@@ -61,19 +60,42 @@ export class WelcomeTeamPage implements OnInit {
   
 
   GoBack() {
-    this.location.back();
+    //this.location.back();
+    this.router.navigate(['home/teams-list'])
   }
   
   updateTeamPath(){
     this.router.navigate(['home/edit-team', this.id]);
-   // this.router.navigateByUrl(['/home/edit-team', this.id]);
+   // this.router.navigateByUrl('/home/edit-team', this.id);
   }
 
   deleteTeam(){
 
     const deleteUrl = `api/team/${this.id}`;
-    this.http.delete(deleteUrl).subscribe(res => { console.log(res)});
-    this.router.navigateByUrl('home/teams-list');
+    this.http.delete(deleteUrl).subscribe(async() => {
+
+      const toastSuccess = await this.toastController.create({
+        message: 'Your team has been deleted successfuly',
+        duration: 4000,
+        showCloseButton: true,
+        color: 'dark'
+      });
+      toastSuccess.present();
+      this.router.navigateByUrl('home/teams-list');
+
+
+    }, async err =>{
+
+      const toastFail = await this.toastController.create({
+        message: 'An error occured, Please try later',
+        duration: 4000,
+        showCloseButton: true,
+        color: 'dark'
+      });
+      toastFail.present();
+      
+
+    });
   }
 
 }

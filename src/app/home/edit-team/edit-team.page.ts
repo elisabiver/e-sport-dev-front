@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-team',
@@ -25,6 +26,7 @@ export class EditTeamPage implements OnInit {
   constructor(private modalController: ModalController,
               private router: Router,
               public http: HttpClient,
+              private toastController: ToastController,
               private route: ActivatedRoute,
               private location: Location) { }
 
@@ -72,14 +74,33 @@ export class EditTeamPage implements OnInit {
       logo: "http//photo",
     }
 
-    this.http.patch(updateUrl, patchObject).subscribe(res => {
+    this.http.patch(updateUrl, patchObject).subscribe(async() => {
+
+      const toastSuccess = await this.toastController.create({
+        message: 'Your team has been edited successfuly',
+        duration: 4000,
+        showCloseButton: true,
+        color: 'dark'
+      });
+      toastSuccess.present();
       this.router.navigate(["home/welcome-team", this.id]);
+      
+
+    }, async err => {
+
+      const toastFail = await this.toastController.create({
+        message: 'An error occured, Please try later',
+        duration: 4000,
+        showCloseButton: true,
+        color: 'dark'
+      });
+      toastFail.present();
+
     });
   }
 
   GoBack() {
     this.location.back();
   }
-
 
 }
