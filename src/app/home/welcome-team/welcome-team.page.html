@@ -36,9 +36,10 @@
     </ion-card-content>
   </ion-card>
 
-
-  <ion-button  (click)="updateTeamPath()" ><ion-icon name="create"></ion-icon></ion-button>
-  <ion-button (click)="deleteTeam()" ><ion-icon name="trash"></ion-icon></ion-button> 
-    
+  <section id="operations">
+   <ion-button shape="round" (click)="updateTeamPath()" ><ion-icon name="create"></ion-icon></ion-button>
+  
+  <ion-button shape="round" color="danger" (click)="deleteTeam()" ><ion-icon name="trash"></ion-icon></ion-button> 
+</section>
     
 </ion-content >
