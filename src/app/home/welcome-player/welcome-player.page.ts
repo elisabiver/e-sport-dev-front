@@ -58,15 +58,15 @@ export class WelcomePlayerPage implements OnInit {
       this.teams = team;
 
       const urlTournament = `/api/tournament`;
-      console.log(this.teams, "les teams avant ma fonction map")
+      // console.log(this.teams, "les teams avant ma fonction map")
       this.http.get<Tournament[]>(urlTournament).pipe(
         tap(console.log),
         map(tournaments => tournaments.filter(tournament => tournament.teams.includes(this.teams)))).subscribe(tournament => {
         this.tournaments = tournament;
-        console.log(this.teams, "ha")
-        console.log(this.tournaments, "tournaments")
+        // console.log(this.teams, "ha")
+        // console.log(this.tournaments, "tournaments")
       });
-      console.log(this.teams, "teams de moi")
+      // console.log(this.teams, "teams de moi")
     });
   }
 
@@ -80,31 +80,23 @@ export class WelcomePlayerPage implements OnInit {
   takePicture() {
     this.pictureService.takeAndUploadPicture().subscribe(picture => {
       this.picture = picture;
-      console.log(picture.url)
     }, err => {
       console.warn('Could not take picture', err);
     });
-    // this.modifyUserPicture();
 
-
+    let url =  `api/player/${this.player._id}`;
+      let payload = {
+          picture: this.picture.url,
+          // picture: "https://comem-qimg.herokuapp.com/images/6123c634-6a63-43c2-a17d-37f3b8e9a614.png",
+          // headers: new HttpHeaders{
+          // Content-Type: 'application/json',
+          // Authorization: Bearer ${this.auth.getToken()["source"]["source"]["_events"][0].token}
+      };
+      this.http.patch(url, payload).subscribe();
   }
 
   modifyUserPicture(){
-   var url =  `api/player/${this.player._id}`;
-    //envoyer url et id à notre API
-    //modifier le player actuel avec la nouvelle url
-    // PATCH /api/player/this.player._id HTTP/1.1
-    // Content-Type: application/json
-      
-      // let payload = {
-      //     picture: this.picture.url,
-      //     headers: new HttpHeaders{
-      //     Content-Type: 'application/json',
-      //     Authorization: Bearer ${this.auth.getToken()["source"]["source"]["_events"][0].token}
-      //   }
-      // };
-      
-    // this.http.patch(url, payload).subscribe();
+   
   }
 
   logOut() {

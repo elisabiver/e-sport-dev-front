@@ -57,7 +57,7 @@
   <ion-list>
     <ion-item *ngFor="let player of players">
       <ion-avatar slot="start">
-        <img src="/assets/images/Atlantadafran.png">
+        <img src={{player.picture}}/>
       </ion-avatar>
       <ion-label>
         <h2>{{ player.pseudo }}</h2>
