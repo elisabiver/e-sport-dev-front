@@ -10,18 +10,18 @@
 
 <ion-content>
 
-  <ion-card *ngIf="team">
+  <ion-card *ngIf="cachedTeam">
     <ion-card-header>
       <ion-card-subtitle>
         <img id="team_logo" src="/assets/images/logo-team.png">
       </ion-card-subtitle>
-      <ion-card-title>{{ team.name }}</ion-card-title>
+      <ion-card-title>{{ cachedTeam.name }}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      <h3>Number of Players: {{ team.totalPlayers }}</h3>
-      <ion-list>
-        <ion-item *ngFor="let player of team.playersInTeam">
+      <h3>Number of Players: {{ cachedTeam.totalPlayers }}</h3>
+      <ion-list> 
+        <ion-item *ngFor="let player of cachedTeam.playersInTeam">
           <ion-avatar slot="start">
             <img src="/assets/images/Atlantadafran.png">
           </ion-avatar>
