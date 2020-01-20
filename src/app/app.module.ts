@@ -14,6 +14,7 @@ import { AuthInterceptorProvider } from './auth/auth-interceptor.service';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ModalPageModule } from './pages/modal/modal.module';
@@ -27,6 +28,7 @@ import { ModalTPageModule } from './pages/modal-t/modal-t.module';
     StatusBar,
     Geolocation,
     SplashScreen,
+    Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorProvider, multi: true }
   ],

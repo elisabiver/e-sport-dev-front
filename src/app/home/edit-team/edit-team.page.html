@@ -10,12 +10,13 @@
 <ion-content>
   <form #updateTeamForm="ngForm" (submit)="updateTeam(updateTeamForm)" method="patch">
     <ion-item>
-      <ion-label position="floating">New team name</ion-label>
-      <ion-input ngModel type="text" name="name" required></ion-input>
+      <ion-label position="floating">Please enter a new team name</ion-label>
+      <ion-input ngModel placeholder="New team name" type="text" name="name" required></ion-input>
     </ion-item>
-    <section>
-      <ion-button shape="round" type="button" (click)="openModal()"><ion-icon name="add"></ion-icon>Change Players</ion-button>
+    <section id="change_players">
+      <ion-button shape="round" type="button" (click)="openModal()"><ion-icon name="refresh"></ion-icon>Change Players</ion-button>
     </section>
+    <ion-item *ngIf="datas">New players : </ion-item>
     <ion-input type="image" placeholder="Image" name="image" required></ion-input>
     <ion-list>
       <ion-item *ngFor="let d of datas">
@@ -30,8 +31,8 @@
         </ion-label>
       </ion-item>
     </ion-list>
-    <section id="create_team">
-      <ion-button shape="round" type="submit">Update Team</ion-button>
+    <section id="update_team">
+      <ion-button expand="block" color="secondary" type="submit">Update Team</ion-button>
     </section>
   </form>
 </ion-content>

@@ -3,11 +3,17 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user';
 import { Team } from 'src/app/models/team';
 import { filter, map, tap } from 'rxjs/operators';
 import { Tournament } from 'src/app/models/tournament';
 import { WebsocketService } from 'src/websocket/websocket.service';
+import { Camera, CameraOptions  } from '@ionic-native/camera/ngx';
+import { QimgImage } from '../../models/qimg-image';
+import { PictureService } from '../../services/picture/picture.service';
+import { PlayerService } from 'src/app/services/player.service'
+
 
 @Component({
   selector: 'app-welcome-player',
@@ -18,15 +24,24 @@ export class WelcomePlayerPage implements OnInit {
   player: User;
   teams: Team[];
   teamsOfPlayer: Team[];
+
   tournaments: Array<Tournament> = [];
   message: object;
   players: Array<User>;
+  pictureData: string;
+  picture: QimgImage;
+
 
   constructor(private auth: AuthService,
     private router: Router,
     private modalController: ModalController,
+
     private wsService: WebsocketService,
-    public http: HttpClient) {
+    public http: HttpClient,
+    private camera: Camera,
+    private pictureService: PictureService,
+    public http: HttpClient,
+    private playerService: PlayerService) {
     this.teamsOfPlayer = [];
     this.teams = [];
     this.tournaments = [];
@@ -40,6 +55,7 @@ export class WelcomePlayerPage implements OnInit {
 
   wsShow(message) {
     this.message = message;
+
   }
 
   ngOnInit() {
@@ -71,6 +87,7 @@ export class WelcomePlayerPage implements OnInit {
 
   }
 
+
   ionViewWillEnter() {
     const urlTeam = `/api/team`;
     this.http.get<Team[]>(urlTeam).pipe(
@@ -80,25 +97,46 @@ export class WelcomePlayerPage implements OnInit {
       this.teams = team;
 
       const urlTournament = `/api/tournament`;
-      console.log(this.teams, "les teams avant ma fonction map")
+      // console.log(this.teams, "les teams avant ma fonction map")
       this.http.get<Tournament[]>(urlTournament).pipe(
         tap(console.log),
         map(tournaments => tournaments.filter(tournament => tournament.teams.includes(this.teams)))).subscribe(tournament => {
         this.tournaments = tournament;
-        console.log(this.teams, "ha")
-        console.log(this.tournaments, "tournaments")
+        // console.log(this.teams, "ha")
+        // console.log(this.tournaments, "tournaments")
       });
-      console.log(this.teams, "teams de moi")
+      // console.log(this.teams, "teams de moi")
     });
   }
 
   getCurrentUser() {
     return this.auth.getUser().subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.player = res;
     });
   }
 
+  takePicture() {
+    this.pictureService.takeAndUploadPicture().subscribe(picture => {
+      this.picture = picture;
+    }, err => {
+      console.warn('Could not take picture', err);
+    });
+
+    let url =  `api/player/${this.player._id}`;
+      let payload = {
+          picture: this.picture.url,
+          // picture: "https://comem-qimg.herokuapp.com/images/6123c634-6a63-43c2-a17d-37f3b8e9a614.png",
+          // headers: new HttpHeaders{
+          // Content-Type: 'application/json',
+          // Authorization: Bearer ${this.auth.getToken()["source"]["source"]["_events"][0].token}
+      };
+      this.http.patch(url, payload).subscribe();
+  }
+
+  modifyUserPicture(){
+   
+  }
 
   logOut() {
     console.log('logging out...');

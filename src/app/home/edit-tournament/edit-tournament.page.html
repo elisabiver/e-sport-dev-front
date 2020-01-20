@@ -11,8 +11,8 @@
 <ion-content>
   <form #form="ngForm" (ngSubmit)="updateTournament(form)" method="post">
     <ion-item>
-      <ion-label position="floating">New Tournament's name</ion-label>
-      <ion-input ngModel name="name" required></ion-input>
+      <ion-label position="floating">Please enter a new tournament name</ion-label>
+      <ion-input ngModel placeholder="New tournament name" name="name" required></ion-input>
     </ion-item>
 
     <ion-item-divider>
@@ -31,11 +31,12 @@
     </ion-item>
 
 
-    <section id="add_team">
+    <section id="update_team">
       <ion-button shape="round" type="button" (click)="openModalTournament()">
-        <ion-icon name="add"></ion-icon>Change Teams
+        <ion-icon name="refresh"></ion-icon> Change Teams
       </ion-button>
     </section>
+    <ion-item *ngIf="datas">New teams : </ion-item>
     <ion-list>
       <ion-item *ngFor="let team of datas">
         <ion-avatar slot="start">
@@ -49,8 +50,8 @@
       </ion-item>
     </ion-list>
 
-    <section id="create_tournament">
-      <ion-button expand="block" type="submit">Edit tournament</ion-button>
+    <section id="update_tournament">
+      <ion-button expand="block" color="secondary" type="submit">Update tournament</ion-button>
     </section>
   </form>
 </ion-content>
