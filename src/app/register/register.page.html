@@ -8,30 +8,30 @@
   <form #form="ngForm" (ngSubmit)="register(form)" method="post">
     <ion-item>
       <ion-label position="floating">First Name</ion-label>
-      <ion-input ngModel name="firstName" required="true"></ion-input>
+      <ion-input ngModel name="firstName" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Last Name</ion-label>
-      <ion-input ngModel name="lastName" required="true"></ion-input>
+      <ion-input ngModel name="lastName" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Pseudo</ion-label>
-      <ion-input ngModel name="pseudo" required="true"></ion-input>
+      <ion-input ngModel name="pseudo" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Birthdate </ion-label>
-      <ion-datetime ngModel name="birthDate" displayFormat="D MMM YYYY" min="1950" max="2005" required="true"></ion-datetime>
+      <ion-datetime ngModel name="birthDate" displayFormat="D MMM YYYY" min="1950" max="2005" required></ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" ngModel name="password" required="true"></ion-input>
+      <ion-input type="password" ngModel name="password" required></ion-input>
     </ion-item>
 
-    <ion-radio-group ngModel name="gender" required="true">
+    <ion-radio-group ngModel name="gender" required>
       <ion-list-header>
         <ion-label>Gender</ion-label>
       </ion-list-header>
