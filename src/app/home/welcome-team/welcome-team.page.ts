@@ -32,11 +32,10 @@ export class WelcomeTeamPage implements OnInit {
       this.id = params['id'];
 
          // récuperer la team depuis le cache
-    // this.cachedTeam =  this.cache;
-     console.log(this.cachedTeam); // Working 
+     this.cachedTeam = this.cache.getCache()
+     console.log(this.cachedTeam);
     });
 
-    const urlTeam = `api/team/${this.id}`;
     
       // récuperer la team depuis le cache
   
