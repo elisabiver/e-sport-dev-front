@@ -12,7 +12,9 @@ import { WebsocketService } from 'src/websocket/websocket.service';
 import { Camera, CameraOptions  } from '@ionic-native/camera/ngx';
 import { QimgImage } from '../../models/qimg-image';
 import { PictureService } from '../../services/picture/picture.service';
-import { PlayerService } from 'src/app/services/player.service'
+import { PlayerService } from 'src/app/services/player.service';
+
+
 
 
 @Component({
@@ -24,7 +26,6 @@ export class WelcomePlayerPage implements OnInit {
   player: User;
   teams: Team[];
   teamsOfPlayer: Team[];
-
   tournaments: Array<Tournament> = [];
   message: object;
   players: Array<User>;
@@ -34,10 +35,7 @@ export class WelcomePlayerPage implements OnInit {
 
   constructor(private auth: AuthService,
     private router: Router,
-    private modalController: ModalController,
-
     private wsService: WebsocketService,
-    public http: HttpClient,
     private camera: Camera,
     private pictureService: PictureService,
     public http: HttpClient,
