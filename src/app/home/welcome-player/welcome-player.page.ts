@@ -8,10 +8,12 @@ import { User } from 'src/app/models/user';
 import { Team } from 'src/app/models/team';
 import { filter, map, tap } from 'rxjs/operators';
 import { Tournament } from 'src/app/models/tournament';
+import { WebsocketService } from 'src/websocket/websocket.service';
 import { Camera, CameraOptions  } from '@ionic-native/camera/ngx';
 import { QimgImage } from '../../models/qimg-image';
 import { PictureService } from '../../services/picture/picture.service';
 import { PlayerService } from 'src/app/services/player.service'
+
 
 @Component({
   selector: 'app-welcome-player',
@@ -22,13 +24,20 @@ export class WelcomePlayerPage implements OnInit {
   player: User;
   teams: Team[];
   teamsOfPlayer: Team[];
-  tournaments: Tournament[];
+
+  tournaments: Array<Tournament> = [];
+  message: object;
+  players: Array<User>;
   pictureData: string;
   picture: QimgImage;
+
 
   constructor(private auth: AuthService,
     private router: Router,
     private modalController: ModalController,
+
+    private wsService: WebsocketService,
+    public http: HttpClient,
     private camera: Camera,
     private pictureService: PictureService,
     public http: HttpClient,
@@ -36,7 +45,17 @@ export class WelcomePlayerPage implements OnInit {
     this.teamsOfPlayer = [];
     this.teams = [];
     this.tournaments = [];
-    
+
+    this.wsService
+    .listen()
+    .subscribe((message: any) => {
+      this.wsShow(JSON.parse(message));
+    });
+  }
+
+  wsShow(message) {
+    this.message = message;
+
   }
 
   ngOnInit() {
@@ -45,6 +64,26 @@ export class WelcomePlayerPage implements OnInit {
       //console.log("test");
     })
     this.getCurrentUser();
+
+    const urlTeam = `api/team`;
+    const urlTournament = `api/tournament`;
+
+
+    this.http.get<Tournament[]>(urlTournament).subscribe(tournaments => {
+      this.tournaments = tournaments;  
+
+        this.http.get<Team[]>(urlTeam).subscribe(teams => {
+          this.teams = teams;  
+          this.message = {
+
+            "TotalTeam": this.teams.length,
+            "TotalTournament": this.tournaments.length
+          }
+          console.log(this.message)
+          this.wsShow(this.message);
+
+        });
+    });
 
   }
 
