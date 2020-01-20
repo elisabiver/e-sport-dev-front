@@ -13,7 +13,7 @@ import { Camera, CameraOptions  } from '@ionic-native/camera/ngx';
 import { QimgImage } from '../../models/qimg-image';
 import { PictureService } from '../../services/picture/picture.service';
 import { PlayerService } from 'src/app/services/player.service';
-
+import { environment } from 'src/environments/environment';
 
 
 
@@ -57,14 +57,17 @@ export class WelcomePlayerPage implements OnInit {
   }
 
   ngOnInit() {
-    const urlPlayer = `/api/player`;
+    //const urlPlayer = `/api/player`;
+    const urlPlayer = `${environment.apiUrl}/player`;
     this.http.get<User[]>(urlPlayer).subscribe(player => {
       //console.log("test");
     })
     this.getCurrentUser();
 
-    const urlTeam = `api/team`;
-    const urlTournament = `api/tournament`;
+    //const urlTeam = `api/team`;
+    const urlTeam = `${environment.apiUrl}/team`;
+    const urlTournament = `${environment.apiUrl}/tournament`;
+    //const urlTournament = `api/tournament`;
 
 
     this.http.get<Tournament[]>(urlTournament).subscribe(tournaments => {

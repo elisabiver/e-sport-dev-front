@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-team',
@@ -35,7 +36,8 @@ export class EditTeamPage implements OnInit {
       this.id = params['id'];
     });
  
-    const urlTeam = `api/team/${this.id}`;
+    const urlTeam = `${environment.apiUrl}/team/${this.id}`;
+    //const urlTeam = `api/team/${this.id}`;
 
     this.http.get<Team>(urlTeam).subscribe(result => {
       this.team = result;
