@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Informations</ion-title>
-    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large" ></ion-icon>
+    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -12,15 +12,15 @@
 
   <ion-card *ngIf="team">
     <ion-card-header>
-      <ion-card-subtitle>   
-        <img src="/assets/images/logo-team.png">
+      <ion-card-subtitle>
+        <img id="team_logo" src="/assets/images/logo-team.png">
       </ion-card-subtitle>
       <ion-card-title>{{ team.name }}</ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content>
       <h3>Number of Players: {{ team.totalPlayers }}</h3>
-      <ion-list> 
+      <ion-list>
         <ion-item *ngFor="let player of team.playersInTeam">
           <ion-avatar slot="start">
             <img src="/assets/images/Atlantadafran.png">
@@ -37,9 +37,13 @@
   </ion-card>
 
   <section id="operations">
-   <ion-button shape="round" (click)="updateTeamPath()" ><ion-icon name="create"></ion-icon></ion-button>
-  
-  <ion-button shape="round" color="danger" (click)="deleteTeam()" ><ion-icon name="trash"></ion-icon></ion-button> 
-</section>
-    
-</ion-content >
+    <ion-button shape="round" (click)="updateTeamPath()">
+      <ion-icon name="create"></ion-icon>
+    </ion-button>
+
+    <ion-button shape="round" color="danger" (click)="deleteTeam()">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </section>
+
+</ion-content>

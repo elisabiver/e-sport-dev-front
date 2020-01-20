@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>welcome-tournament</ion-title>
-    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large" ></ion-icon>
+    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -13,12 +13,12 @@
     <ion-card-header>
       <ion-card-title>{{ tournament.name }}</ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content>
       <ion-title>
         <h3>Teams in Tournament</h3>
       </ion-title>
-      <ion-list> 
+      <ion-list>
         <ion-item *ngFor="let team of tournament.teams">
           <ion-label>
             <h2>{{ team }}</h2>
@@ -29,12 +29,17 @@
   </ion-card>
 
   <div id="mapBox">
-    <div class="leaflet-map" leaflet [leafletOptions]="mapOptions" (leafletMapReady)="onMapReady($event)" [leafletLayers]="mapMarkers"></div>
+    <div class="leaflet-map" leaflet [leafletOptions]="mapOptions" (leafletMapReady)="onMapReady($event)"
+      [leafletLayers]="mapMarkers"></div>
   </div>
 
 
-
-  <ion-button  (click)="updateTournamentPath()" ><ion-icon name="create"></ion-icon></ion-button>
-  <ion-button (click)="deleteTournament()" ><ion-icon name="trash"></ion-icon></ion-button> 
-
+  <section id="operations">
+    <ion-button shape="round" (click)="updateTournamentPath()">
+      <ion-icon name="create"></ion-icon>
+    </ion-button>
+    <ion-button shape="round" color="danger" (click)="deleteTournament()">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </section>
 </ion-content>
