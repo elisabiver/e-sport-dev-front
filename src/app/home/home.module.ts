@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 
+import { NotInValidatorDirective } from '../not-in.directive';
+
 @NgModule({
   imports: [
     CommonModule,

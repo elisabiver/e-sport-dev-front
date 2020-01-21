@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
+import { format } from 'url';
 
 @Component({
   selector: 'app-create-team',
@@ -21,7 +22,8 @@ export class CreateTeamPage implements OnInit {
   teams: Team[];
   players: User[];
   datas: User[];
-
+  name: String;
+  
   constructor(private teamService: TeamService,
     private modalController: ModalController,
     private navController: NavController,
@@ -56,6 +58,9 @@ export class CreateTeamPage implements OnInit {
   }
 
   async createTeam(form: NgForm) {
+
+    this.validTeam(form);
+
     let payload = {
       name: form.value.name,
       players: this.datas,
@@ -94,7 +99,11 @@ export class CreateTeamPage implements OnInit {
     this.location.back();
   }
 
-
+  validTeam(form: NgForm){
+    if(form.valid){
+      console.log("the team is valid")
+    }
+  }
 
 }
 

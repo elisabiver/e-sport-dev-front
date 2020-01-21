@@ -11,7 +11,7 @@
   <form #teamForm="ngForm" (submit)="createTeam(teamForm)" method="post">
     <ion-item>
       <ion-label position="floating">Enter team name</ion-label>
-      <ion-input ngModel type="text" name="name" required></ion-input>
+      <ion-input [(ngModel)]="name" type="text" name="name" required #teamInput="ngModel" pattern="[a-zA-Z0-9 -]*" minlength="3" maxlength="40"></ion-input>
     </ion-item>
     <section id="add_player">
       <ion-button shape="round" type="button" (click)="openModal()"><ion-icon name="add"></ion-icon>Add Player</ion-button>
@@ -20,7 +20,7 @@
     <ion-list>
       <ion-item *ngFor="let d of datas">
         <ion-avatar slot="start">
-          <img src="/assets/images/Atlantadafran.png">
+          <!-- <img src={{ d.picture }}> -->
         </ion-avatar>
         <ion-label>
           <h2>{{ d.pseudo }}</h2>
@@ -31,7 +31,10 @@
       </ion-item>
     </ion-list>
     <section id="create_team">
-      <ion-button expand="block" color="secondary" type="submit">Create Team</ion-button>
+      <ion-button [disabled]="teamForm.invalid" expand="block" color="secondary" type="submit">Create Team</ion-button>
     </section>
+
+    <p *ngIf="teamInput.invalid && teamInput.dirty"> The name contains invalid caracters (are allowed: a-z ,A-Z, 0-9, space, backlash) OR is not the right size (3<40 caracters) </p>
+    <p *ngIf="teamInput.hasError('required') && teamInput.dirty"> The name is required</p>
   </form>
 </ion-content>

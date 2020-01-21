@@ -26,6 +26,10 @@ export class CreateTournamentPage implements OnInit {
   c: Coordinates;
   datas: [];
   teams: Team[];
+  name: String;
+  latitude: number;
+  longitude: number;
+  notIn: [];
 
   constructor(
     private tournamentService: TournamentService,
@@ -36,10 +40,9 @@ export class CreateTournamentPage implements OnInit {
     private location: Location,
     private toastController: ToastController,
     private geolocation: Geolocation) {
-
-    this.tournaments = [];
-    this.datas = [];
-    this.teams = [];
+      this.tournaments = [];
+      this.datas = [];
+      this.teams = [];
   }
 
   ngOnInit() {
@@ -68,6 +71,8 @@ export class CreateTournamentPage implements OnInit {
   }
 
   createTournament(form: NgForm) {
+    this.validTournament(form);
+
     var long = 0;
     var lat = 0;
 
@@ -134,9 +139,13 @@ export class CreateTournamentPage implements OnInit {
 
   }
 
-
-
   GoBack() {
     this.location.back();
+  }
+
+  validTournament(form: NgForm){
+    if(form.valid){
+      console.log("the tournament is valid")
+    }
   }
 }
