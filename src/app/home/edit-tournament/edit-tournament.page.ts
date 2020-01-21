@@ -122,7 +122,7 @@ export class EditTournamentPage implements OnInit {
       toastSuccess.present();
       form.reset();
       this.datas.splice(0, this.datas.length)
-      this.router.navigate(["home/welcome-tournament", this.id]);
+      this.router.navigate(["home/tournement-list"]);
 
 
     }, async err => {

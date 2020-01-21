@@ -85,7 +85,7 @@ export class EditTeamPage implements OnInit {
         color: 'dark'
       });
       toastSuccess.present();
-      this.router.navigate(["home/welcome-team", this.id]);
+      this.router.navigate(["home/teams-list"]);
       
 
     }, async err => {
@@ -102,7 +102,7 @@ export class EditTeamPage implements OnInit {
   }
 
   GoBack() {
-    this.location.back();
+    this.router.navigate(["home/teams-list"]);
   }
 
 }
