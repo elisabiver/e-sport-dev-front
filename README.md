@@ -4,12 +4,12 @@ Toornament is an ionic/Angular application. The project has been developped by E
 
 This app is for e-sport gamers. you can make teams with other players and create tournaments with multiple teams.
 
-The app use an API REST, (https://e-sport-dev.herokuapp.com/ "e-sport") developped during ArchiOWeb course given by (https://github.com/AlphaHydrae "Simon Oulevay").
+The app use an API REST, [e-sport](https://e-sport-dev.herokuapp.com/) developped during ArchiOWeb course given by [Simon Oulevay](https://github.com/AlphaHydrae).
 
 
 
 ## Requirements
-(https://nodejs.org/en/ "Node.js") 12.x
+[Node.js](https://nodejs.org/en/) 12.x
 
 ## Usage
 
