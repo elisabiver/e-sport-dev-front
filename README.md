@@ -83,4 +83,5 @@ And there is a REVERSE button to reverse the list.
 #### Useful links 
 
 [Ionic Documentation](https://ionicframework.com/docs)
+
 [Angular Documentation](https://angular.io/docs/)
