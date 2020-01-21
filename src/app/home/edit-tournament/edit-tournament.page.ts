@@ -26,6 +26,9 @@ export class EditTournamentPage implements OnInit {
   datas: [];
   teams: Team[];
   id: string;
+  name: String;
+  latitude: number;
+  longitude: number;
 
   constructor(
     private tournamentService: TournamentService,

@@ -23,6 +23,7 @@ export class EditTeamPage implements OnInit {
   datas: User[];
   id: string;
   team: Team;
+  newName: string;
 
   constructor(private modalController: ModalController,
               private router: Router,
@@ -67,6 +68,7 @@ export class EditTeamPage implements OnInit {
 
 
   updateTeam(updateTeamForm: NgForm) :void{
+    this.validEditTeam(updateTeamForm);
 
     const updateUrl = `api/team/${this.id}`;
     
@@ -103,6 +105,12 @@ export class EditTeamPage implements OnInit {
 
   GoBack() {
     this.router.navigate(["home/teams-list"]);
+  }
+
+  validEditTeam(form: NgForm){
+    if(form.valid){
+      console.log("the team is valid")
+    }
   }
 
 }

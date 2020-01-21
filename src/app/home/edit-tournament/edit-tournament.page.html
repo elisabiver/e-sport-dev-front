@@ -12,24 +12,30 @@
   <form #form="ngForm" (ngSubmit)="updateTournament(form)" method="post">
     <ion-item>
       <ion-label position="floating">Please enter a new tournament name</ion-label>
-      <ion-input ngModel placeholder="New tournament name" name="name" required></ion-input>
+      <ion-input [(ngModel)]="name" type="text" name="name" required #tournamentInput="ngModel" pattern="[a-zA-Z0-9 -]*" minlength="3" maxlength="40"></ion-input>
     </ion-item>
-
+      <p *ngIf="tournamentInput.invalid && tournamentInput.dirty"> The name contains invalid caracters (are allowed: a-z ,A-Z, 0-9, space, backlash) OR is not the right size (3 < 40 caracters) </p>
+      <p *ngIf="tournamentInput.hasError('required') && tournamentInput.dirty"> The name is required</p>
+      <p *ngIf="tournamentInput.hasError('notIn') && tournamentInput.dirty"> The name is forbidden</p>
     <ion-item-divider>
-      <ion-label>Coordinates</ion-label>
+
+      <ion-label>Coordinates</ion-label><ion-note>if you wish to use your current location, just leave the latitude and
+        longitude blank.</ion-note>
     </ion-item-divider>
+
     <ion-item>
       <ion-label NgModel name="location" position="floating">Latitude</ion-label>
-      <ion-input name="latitude"></ion-input>
-      <ion-note>if you wish to use your own current coordinates (your current location), just leave the latitude and
-        longitude blank.</ion-note>
-
+      <ion-input [(ngModel)]="latitude" name="latitude" required #tournament2Input="ngModel" pattern="[0-9.]*"></ion-input>
+      <p *ngIf="tournament2Input.invalid && tournamentInput.dirty"> The name contains invalid caracters (are allowed: 0-9, point)</p>
+      <p *ngIf="tournament2Input.hasError('required') && tournamentInput.dirty"> The latitude is required</p>
     </ion-item>
+
     <ion-item>
       <ion-label NgModel name="location" position="floating">Longitude</ion-label>
-      <ion-input name="longitude"></ion-input>
+      <ion-input [(ngModel)]="longitude" name="longitude" required #tournament3Input="ngModel" pattern="[0-9.]*"></ion-input>
+      <p *ngIf="tournament3Input.invalid && tournamentInput.dirty"> The longitude contains invalid caracters (are allowed: 0-9, point)</p>
+      <p *ngIf="tournament3Input.hasError('required') && tournamentInput.dirty"> The longitude is required</p>
     </ion-item>
-
 
     <section id="update_team">
       <ion-button shape="round" type="button" (click)="openModalTournament()">
