@@ -8,17 +8,23 @@
   <form #form="ngForm" (ngSubmit)="register(form)" method="post">
     <ion-item>
       <ion-label position="floating">First Name</ion-label>
-      <ion-input ngModel name="firstName" required></ion-input>
+      <ion-input ngModel name="firstName" required type="text" [(ngModel)]="firstName" required #registerInput="ngModel" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ -]*" minlength="3" maxlength="40"></ion-input>
+      <p *ngIf="registerInput.invalid && registerInput.dirty"> The name contains invalid caracters (are allowed: a-z ,A-Z, 0-9, all the french accents, space, backlash) OR is not the right size (3 < 40 caracters) </p>
+      <p *ngIf="registerInput.hasError('required') && registerInput.dirty"> The firstName is required</p>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Last Name</ion-label>
-      <ion-input ngModel name="lastName" required></ion-input>
+      <ion-input ngModel name="lastName" required type="text" [(ngModel)]="lastName" required #registerInput2="ngModel" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ -]*" minlength="3" maxlength="80"></ion-input>
+      <p *ngIf="registerInput2.invalid && registerInput2.dirty"> The name contains invalid caracters (are allowed: a-z ,A-Z, 0-9, all the french accents, space, backlash) OR is not the right size (3 < 80 caracters) </p>
+      <p *ngIf="registerInput2.hasError('required') && registerInput2.dirty"> The lastName is required</p>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Pseudo</ion-label>
-      <ion-input ngModel name="pseudo" required></ion-input>
+      <ion-input ngModel name="pseudo" required type="text" [(ngModel)]="nickname" required #registerInput3="ngModel" pattern="[a-zA-Z -]*" minlength="3" maxlength="40"></ion-input>
+      <p *ngIf="registerInput3.invalid && registerInput3.dirty"> The name contains invalid caracters (are allowed: a-z ,A-Z, 0-9, space, backlash) OR is not the right size (3 < 40 caracters) </p>
+      <p *ngIf="registerInput3.hasError('required') && registerInput3.dirty"> The nickname is required</p>
     </ion-item>
 
     <ion-item>
@@ -28,7 +34,9 @@
 
     <ion-item>
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" ngModel name="password" required></ion-input>
+      <ion-input type="password" ngModel name="password" required type="text" [(ngModel)]="nickname" required #registerInput4="ngModel" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ$ -_]*" minlength="3" maxlength="40"></ion-input>
+      <p *ngIf="registerInput3.invalid && registerInput3.dirty"> The name contains invalid caracters (are allowed: a-z ,A-Z, 0-9, all the french accents, space, backlash) OR is not the right size (3 < 40 caracters) </p>
+      <p *ngIf="registerInput3.hasError('required') && registerInput3.dirty"> The password is required</p>
     </ion-item>
 
     <ion-radio-group ngModel name="gender" required>
