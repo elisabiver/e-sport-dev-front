@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Informations</ion-title>
-    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large"></ion-icon>
+    <ion-icon slot="end" (click)="GoBack()" class="return" name="arrow-round-back" size="large" margin="0 0 10px 0"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -23,7 +23,7 @@
       <ion-list> 
         <ion-item *ngFor="let player of cachedTeam.playersInTeam">
           <ion-avatar slot="start">
-            <img src="/assets/images/Atlantadafran.png">
+             <img src='{{player.picture}}'>
           </ion-avatar>
           <ion-label>
             <h2>{{ player.pseudo }}</h2>
