@@ -56,7 +56,7 @@ export class RegisterPage implements OnInit {
 
     this.authService.register(payload).subscribe({
       next: () => {
-        this.navCtrl.navigateBack('/welcome-player');
+        this.navCtrl.navigateBack('/players-list');
       },
       error: err => {
         console.warn(`Registration failed: ${err.message}`);
