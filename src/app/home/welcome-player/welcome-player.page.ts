@@ -86,6 +86,7 @@ export class WelcomePlayerPage implements OnInit {
 
         });
     });
+    
 
   }
 
@@ -94,8 +95,8 @@ export class WelcomePlayerPage implements OnInit {
     const urlTeam = `/api/team`;
     this.http.get<Team[]>(urlTeam).pipe(
       tap(console.log),
-      map(teams => teams.filter(team => team.players.includes(this.player._id)))).subscribe(team => {
-      this.teams = team;
+      map(teamsOfPlayers => teamsOfPlayers.filter(teamOfPlayer => teamOfPlayer.players.includes(this.player._id)))).subscribe(teamOfPlayer => {
+      this.teamsOfPlayer = teamOfPlayer;
     });
   }
 
