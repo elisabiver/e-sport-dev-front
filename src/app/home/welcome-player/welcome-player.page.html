@@ -22,7 +22,7 @@
     </ion-avatar>
   </ion-item>
   <h3>My teams</h3>
-  <section *ngFor="let team of teams">
+  <section *ngFor="let team of teamsOfPlayer">
     <ion-button (click)="displayTeamByID(team)"  expand="block">{{ team.name }}</ion-button>
   </section>
   <ion-item *ngIf="message"> 
