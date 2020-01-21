@@ -68,9 +68,23 @@ export class WelcomePlayerPage implements OnInit {
     //const urlTeam = `${environment.apiUrl}/team`;
     const urlTeam = `/api/team`
     //const urlTournament = `${environment.apiUrl}/tournament`;
+    
+
+
+
+    
+
+  }
+
+
+  ionViewWillEnter() {
+    const urlTeam = `/api/team`;
+    this.http.get<Team[]>(urlTeam).pipe(
+      tap(console.log),
+      map(teamsOfPlayers => teamsOfPlayers.filter(teamOfPlayer => teamOfPlayer.players.includes(this.player._id)))).subscribe(teamOfPlayer => {
+      this.teamsOfPlayer = teamOfPlayer;
+    });
     const urlTournament = `/api/tournament`
-
-
     this.http.get<Tournament[]>(urlTournament).subscribe(tournaments => {
       this.tournaments = tournaments;  
 
@@ -85,18 +99,6 @@ export class WelcomePlayerPage implements OnInit {
           this.wsShow(this.message);
 
         });
-    });
-    
-
-  }
-
-
-  ionViewWillEnter() {
-    const urlTeam = `/api/team`;
-    this.http.get<Team[]>(urlTeam).pipe(
-      tap(console.log),
-      map(teamsOfPlayers => teamsOfPlayers.filter(teamOfPlayer => teamOfPlayer.players.includes(this.player._id)))).subscribe(teamOfPlayer => {
-      this.teamsOfPlayer = teamOfPlayer;
     });
   }
 
