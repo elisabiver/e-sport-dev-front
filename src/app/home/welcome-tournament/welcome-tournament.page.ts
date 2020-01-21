@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { Tournament } from 'src/app/models/tournament';
+import { Team } from 'src/app/models/team';
 import { ToastController } from '@ionic/angular';
 import { CacheService } from 'src/app/services/cache-service.service';
 
@@ -22,7 +23,9 @@ export class WelcomeTournamentPage implements OnInit {
   name: string;
   tournament: Tournament;
   mapOptions: MapOptions;
-  mapMarkers= [] ;
+  mapMarkers= [];
+  teams: Team[];
+  teamsInTournament: Team[];
 
    onMapReady(map: Map) {
     setTimeout(() => map.invalidateSize(), 0);
@@ -73,6 +76,8 @@ export class WelcomeTournamentPage implements OnInit {
       console.warn(`Could not retrieve user position because: ${err.message}`);
     }); 
   }
+
+  
 
 
 

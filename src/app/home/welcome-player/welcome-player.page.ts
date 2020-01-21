@@ -13,7 +13,7 @@ import { Camera, CameraOptions  } from '@ionic-native/camera/ngx';
 import { QimgImage } from '../../models/qimg-image';
 import { PictureService } from '../../services/picture/picture.service';
 import { PlayerService } from 'src/app/services/player.service';
-import { environment } from 'src/environments/environment';
+import { CacheService } from 'src/app/services/cache-service.service';
 
 
 
@@ -37,6 +37,7 @@ export class WelcomePlayerPage implements OnInit {
     private router: Router,
     private wsService: WebsocketService,
     private camera: Camera,
+    private cache: CacheService<Team>,
     private pictureService: PictureService,
     public http: HttpClient,
     private playerService: PlayerService) {
@@ -57,17 +58,17 @@ export class WelcomePlayerPage implements OnInit {
   }
 
   ngOnInit() {
-    //const urlPlayer = `/api/player`;
-    const urlPlayer = `${environment.apiUrl}/player`;
+    //const urlPlayer = `${environment.apiUrl}/player`;
+    const urlPlayer = `/api/player`
     this.http.get<User[]>(urlPlayer).subscribe(player => {
       //console.log("test");
     })
     this.getCurrentUser();
 
-    //const urlTeam = `api/team`;
-    const urlTeam = `${environment.apiUrl}/team`;
-    const urlTournament = `${environment.apiUrl}/tournament`;
-    //const urlTournament = `api/tournament`;
+    //const urlTeam = `${environment.apiUrl}/team`;
+    const urlTeam = `/api/team`
+    //const urlTournament = `${environment.apiUrl}/tournament`;
+    const urlTournament = `/api/tournament`
 
 
     this.http.get<Tournament[]>(urlTournament).subscribe(tournaments => {
@@ -94,25 +95,12 @@ export class WelcomePlayerPage implements OnInit {
     this.http.get<Team[]>(urlTeam).pipe(
       tap(console.log),
       map(teams => teams.filter(team => team.players.includes(this.player._id)))).subscribe(team => {
-
       this.teams = team;
-
-      const urlTournament = `/api/tournament`;
-      // console.log(this.teams, "les teams avant ma fonction map")
-      this.http.get<Tournament[]>(urlTournament).pipe(
-        tap(console.log),
-        map(tournaments => tournaments.filter(tournament => tournament.teams.includes(this.teams)))).subscribe(tournament => {
-        this.tournaments = tournament;
-        // console.log(this.teams, "ha")
-        // console.log(this.tournaments, "tournaments")
-      });
-      // console.log(this.teams, "teams de moi")
     });
   }
 
   getCurrentUser() {
     return this.auth.getUser().subscribe(res => {
-      // console.log(res);
       this.player = res;
     });
   }
@@ -143,5 +131,11 @@ export class WelcomePlayerPage implements OnInit {
     console.log('logging out...');
     this.auth.logOut();
     this.router.navigateByUrl('/login');
+  }
+
+  displayTeamByID(Team){
+    
+    this.cache.setCache(Team);
+    this.router.navigate(['home/welcome-team', Team._id]);
   }
 }

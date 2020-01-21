@@ -3,7 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home/welcome-player', pathMatch: 'full' },
+  { path: 'home', redirectTo: 'home/welcome-player', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
     canActivate: [ AuthGuard ]
   },
@@ -14,7 +15,8 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'modal-t',
     loadChildren: () => import('./pages/modal-t/modal-t.module').then( m => m.ModalTPageModule)
   }

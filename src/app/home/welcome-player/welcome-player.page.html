@@ -23,27 +23,20 @@
   </ion-item>
   <h3>My teams</h3>
   <section *ngFor="let team of teams">
-    <ion-button expand="block">{{ team.name }}</ion-button>
+    <ion-button (click)="displayTeamByID(team)"  expand="block">{{ team.name }}</ion-button>
   </section>
-  <ion-item>
-    <h2>Your tournaments</h2>
-    <section *ngFor="let tournament of tournaments">
-      <!-- <ion-button expand="block">{{ tournament._id }}</ion-button> -->
-    </section>
-    <ion-button>tournament</ion-button>
-  </ion-item>
   <ion-item *ngIf="message"> 
     <ion-grid>
       <ion-row>
         <ion-col>
           <p class="ion-text-center"><ion-icon size="large" name="people"></ion-icon></p>
           <h2 class="ion-text-center" color="danger">{{message.TotalTeam}}</h2>
-          <p class="ion-text-center space-text">Teams availaible</p>
+          <p class="ion-text-center space-text">Teams available</p>
         </ion-col>
         <ion-col>
           <p class="ion-text-center"><ion-icon size="large" name="trophy"></ion-icon></p>
           <h2 class="ion-text-center" color="danger">{{message.TotalTournament}}</h2>
-          <p class="ion-text-center space-text">Tournaments availaible</p>
+          <p class="ion-text-center space-text">Tournaments available</p>
         </ion-col>
       </ion-row>
     </ion-grid>   
