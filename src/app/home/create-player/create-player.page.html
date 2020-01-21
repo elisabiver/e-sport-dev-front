@@ -9,8 +9,8 @@
 
 <ion-content>
   <form #createPlayer="ngForm" (submit)="displayGreeting()">
-    <ion-input type="text" placeholder="Nickname" name="nickname" required></ion-input>
-    <ion-input type="text" placeholder="Name" name="name" required></ion-input>
+    <ion-input type="text" placeholder="Nickname" [(ngModel)]="nickname" type="text" name="nickname" required #createPlayerInput="ngModel" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ -]*" minlength="3" maxlength="80" required></ion-input>
+    <ion-input type="text" placeholder="Name" [(ngModel)]="name" type="text" name="name" required #createPlayer2Input="ngModel" pattern="[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ -]*" minlength="3" maxlength="80"></ion-input>
     <ion-input type="text" placeholder="Lastname" name="lastname" required></ion-input>
     <ion-radio-group>
       <ion-list-header>
@@ -35,8 +35,6 @@
     </ion-item>
     <ion-input type="password" placeholder="Password" name="password" required></ion-input>
     <ion-input type="image" placeholder="Image" name="image" required></ion-input>
-
-    <ion-input type="text" placeholder="Who are you?" [(ngModel)]="greeting" name="greeting" required></ion-input>
 
     <p *ngIf="displayedGreeting">Hello {{ displayedGreeting }}</p>
  

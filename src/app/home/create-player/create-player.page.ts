@@ -10,6 +10,9 @@ export class CreatePlayerPage implements OnInit {
 
   greeting: string;
   displayedGreeting: string;
+  nickname: string;
+  name: string;
+  
 
   displayGreeting(form: NgForm) {
     if (form.valid) {

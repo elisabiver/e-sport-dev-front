@@ -15,6 +15,10 @@ import { Location } from '@angular/common';
 })
 export class RegisterPage implements OnInit {
   players: User[];
+  nickname: string;
+  firstName: string;
+  lastName: string;
+  password: string;
 
   constructor(private modalController: ModalController,
     private httpClient: HttpClient,
@@ -39,7 +43,7 @@ export class RegisterPage implements OnInit {
     if (form.invalid) {
       return;
     }
-
+    this.validRegister(form)
     let payload = {
       "firstName": form.value.firstName,
       "lastName": form.value.lastName,
@@ -68,6 +72,11 @@ export class RegisterPage implements OnInit {
       }
     }
     ) */
+  }
+  validRegister(form: NgForm){
+    if(form.valid){
+      console.log("the player is valid")
+    }
   }
 
 
