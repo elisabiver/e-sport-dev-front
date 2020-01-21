@@ -82,5 +82,5 @@ And there is a REVERSE button to reverse the list.
 
 #### Useful links 
 
-Ionic Doc
-Angular Doc
+[[https://ionicframework.com/docs](Ionic Doc)]
+[[https://angular.io/docs/](Angular Doc)]
