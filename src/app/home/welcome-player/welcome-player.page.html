@@ -17,7 +17,9 @@
   
   <ion-item id="cont_img">
     <ion-button (click)="takePicture()" expand="block" id="bouton" ><ion-icon name="create"></ion-icon></ion-button>
-    <img id="avatar" src="{{player.picture}}"/>
+    <ion-avatar id="avatar">
+      <img src="{{player.picture}}"/>
+    </ion-avatar>
     <ion-label id="libelle">{{player.firstName}} {{player.lastName}}</ion-label> 
   </ion-item>
   <h3>My teams</h3>
