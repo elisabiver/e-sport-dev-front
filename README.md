@@ -1,9 +1,15 @@
-# E-sport-dev-front
+# Toornament
 
-An ionic/ Angular application. The project has been developped by Elisa Biver, Lucien Pochon and Adrien Lestuzzi. This was done during the DevMobil course taught at [HEIG-VD](https://heig-vd.ch/).
+Toornament is an ionic/Angular application. The project has been developped by Elisa Biver, Lucien Pochon and Adrien Lestuzzi. This was done during the DevMobil course taught at [HEIG-VD](https://heig-vd.ch/).
+
+This app is for e-sport gamers. you can make teams with other players and create tournaments with multiple teams.
+
+The app use an API REST, (https://e-sport-dev.herokuapp.com/ "e-sport") developped during ArchiOWeb course given by (https://github.com/AlphaHydrae "Simon Oulevay").
+
 
 
 ## Requirements
+(https://nodejs.org/en/ "Node.js") 12.x
 
 ## Usage
 
