@@ -1,6 +1,6 @@
 # E-sport-dev-front
 
-An ionic/ Angular application. This was done in the DevMobil course taught at [HEIG-VD](https://heig-vd.ch/) by Elisa Biver, Lucien Pochon and Adrien Lestuzzi.
+An ionic/ Angular application.The application has been developped by Elisa Biver, Lucien Pochon and Adrien Lestuzzi. This was done during the DevMobil course taught at [HEIG-VD](https://heig-vd.ch/).
 
 
 ## Requirements
@@ -82,5 +82,5 @@ And there is a REVERSE button to reverse the list.
 
 #### Useful links 
 
-[[https://ionicframework.com/docs](Ionic Doc)]
-[[https://angular.io/docs/](Angular Doc)]
+[[Ionic Documentation](https://ionicframework.com/docs)]
+[[Angular Documentation](https://angular.io/docs/)]
