@@ -11,7 +11,9 @@
   <form #updateTeamForm="ngForm" (submit)="updateTeam(updateTeamForm)" method="patch">
     <ion-item>
       <ion-label position="floating">Please enter a new team name</ion-label>
-      <ion-input ngModel placeholder="New team name" type="text" name="name" required></ion-input>
+      <ion-input ngModel placeholder="New team name" [(ngModel)]="newName" type="text" name="name" required minlength="3" maxlength="40" #editTeamInput="ngModel" pattern="[a-zA-Z0-9 -]*"></ion-input>
+      <p *ngIf="editTeamInput.invalid && editTeamInput.dirty"> The name contains invalid caracters (are allowed: a-z ,A-Z, 0-9, space, backlash) OR is not the right size (3 < 40 caracters) </p>
+      <p *ngIf="editTeamInput.hasError('required') && editTeamInput.dirty"> The name is required</p>
     </ion-item>
     <section id="change_players">
       <ion-button shape="round" type="button" (click)="openModal()"><ion-icon name="refresh"></ion-icon>Change Players</ion-button>
