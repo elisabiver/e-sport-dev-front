@@ -14,7 +14,7 @@ npm install
 ionic serve
 ```
 
-The browser is going to automatically launch a page on [[http://localhost:8100](http://localhost:8100)]
+The browser is going to automatically launch a page on [http://localhost:8100](http://localhost:8100)
 
 ## Resources
 
@@ -82,5 +82,5 @@ And there is a REVERSE button to reverse the list.
 
 #### Useful links 
 
-[[Ionic Documentation](https://ionicframework.com/docs)]
-[[Angular Documentation](https://angular.io/docs/)]
+[Ionic Documentation](https://ionicframework.com/docs)
+[Angular Documentation](https://angular.io/docs/)
