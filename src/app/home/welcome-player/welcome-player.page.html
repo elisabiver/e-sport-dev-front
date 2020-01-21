@@ -14,12 +14,11 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-item>
-    <ion-label>{{player.firstName}} {{player.lastName}}</ion-label> 
-    <ion-button (click)="takePicture()" expand="block" ><ion-icon name="create"></ion-icon></ion-button>
-    <ion-avatar slot="start"  class="ion-margin-start">
-      <img src={{player.picture}} />
-    </ion-avatar>
+  
+  <ion-item id="cont_img">
+    <ion-button (click)="takePicture()" expand="block" id="bouton" ><ion-icon name="create"></ion-icon></ion-button>
+    <img id="avatar" src="{{player.picture}}"/>
+    <ion-label id="libelle">{{player.firstName}} {{player.lastName}}</ion-label> 
   </ion-item>
   <h3>My teams</h3>
   <section *ngFor="let team of teamsOfPlayer">
